@@ -11,6 +11,7 @@
   "about": "About",
   "projects": {
     "title": "Personal Projects",
+    "shortTitle": "Projects",
     "comingSoon": "More projects on the way!",
     "comingSoonMessage": "This isn't an exhaustive list of my projects. I'm constantly working on new and exciting ones. I'll be updating this section soon with more of my work. Stay tuned!",
     "description": "I'm currently working on some innovative web applications and tools. Check back soon to see a showcase of my latest work in frontend development, including projects using Vue.js, React, and more.",
