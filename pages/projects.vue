@@ -35,18 +35,34 @@
                 :title="tool.name"
                 @click.stop
               >
-                <UIcon :name="tool.icon" class="w-6 h-6" />
+                <UIcon v-if="tool.icon" :name="tool.icon" class="w-6 h-6" />
+                <img
+                  v-else
+                  :src="tool.logo"
+                  alt="Tool Logo"
+                  class="w-6 h-6 hover:brightness-200 transition-all duration-200"
+                />
               </a>
             </div>
-            <a
-              :href="project.url"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-gray-400 hover:text-white transition-colors duration-200"
-              @click.stop
-            >
-              <UIcon name="i-simple-icons-github" class="w-6 h-6" />
-            </a>
+            <div class="flex items-center space-x-2">
+              <span
+                v-if="!project.url"
+                class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-200"
+              >
+                <span class="w-1.5 h-1.5 mr-1.5 rounded-full bg-emerald-500"></span>
+                {{ t("projects.inDevelopment") }}
+              </span>
+              <a
+                v-if="project.url"
+                :href="project.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-gray-400 hover:text-white transition-colors duration-200"
+                @click.stop
+              >
+                <UIcon name="i-simple-icons-github" class="w-6 h-6" />
+              </a>
+            </div>
           </div>
         </a>
       </div>
@@ -55,8 +71,12 @@
         :key="'coming-soon'"
         class="project-card coming-soon bg-transparent dark:bg-transparent rounded-lg overflow-hidden text-left col-span-full"
       >
-        <div class="border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-lg p-4 sm:p-6 h-full">
-          <h2 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-4 text-gray-500 dark:text-gray-400">
+        <div
+          class="border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-lg p-4 sm:p-6 h-full"
+        >
+          <h2
+            class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-4 text-gray-500 dark:text-gray-400"
+          >
             {{ t("projects.comingSoon") }}
           </h2>
           <p class="text-gray-400 dark:text-gray-500">
@@ -83,10 +103,56 @@ const projects = [
     descriptionKey: "projects.portfolioSite.description",
     url: "https://github.com/egemenkar/egmn.dev",
     tools: [
-      { name: "Vue.js", icon: "i-simple-icons-vuedotjs", url: "https://vuejs.org/" },
-      { name: "Nuxt.js", icon: "i-simple-icons-nuxtdotjs", url: "https://nuxt.com/" },
-      { name: "Tailwind CSS", icon: "i-simple-icons-tailwindcss", url: "https://tailwindcss.com/" },
-      { name: "Vercel", icon: "i-simple-icons-vercel", url: "https://vercel.com/" },
+      {
+        name: "Vue.js",
+        icon: "i-simple-icons-vuedotjs",
+        url: "https://vuejs.org/",
+      },
+      {
+        name: "Nuxt.js",
+        icon: "i-simple-icons-nuxtdotjs",
+        url: "https://nuxt.com/",
+      },
+      {
+        name: "Tailwind CSS",
+        icon: "i-simple-icons-tailwindcss",
+        url: "https://tailwindcss.com/",
+      },
+      {
+        name: "Vercel",
+        icon: "i-simple-icons-vercel",
+        url: "https://vercel.com/",
+      },
+    ],
+  },
+  {
+    id: 2,
+    titleKey: "projects.findepMoney.title",
+    descriptionKey: "projects.findepMoney.description",
+    url: null,
+    tools: [
+      {
+        name: "Nuxt.js",
+        icon: "i-simple-icons-nuxtdotjs",
+        url: "https://nuxt.com/",
+      },
+      {
+        name: "PrimeVue",
+        icon: null,
+        logo: "/images/primevue.svg",
+        url: "https://primevue.org/",
+      },
+      {
+        name: "PowerSync",
+        icon: null,
+        logo: "/images/powersync.svg",
+        url: "https://www.powersync.com/",
+      },
+      {
+        name: "Tailwind CSS",
+        icon: "i-simple-icons-tailwindcss",
+        url: "https://tailwindcss.com/",
+      },
     ],
   },
   // Add more projects here as needed

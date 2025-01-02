@@ -1,6 +1,6 @@
 {
   "name": "Egemen Kar",
-  "title": "Frontend Developer",
+  "title": "Senior Frontend Developer",
   "greeting": "Hi there! 👋",
   "intro1": {
     "before": "I'm a Senior Frontend Developer currently working at ",
@@ -10,14 +10,19 @@
   "despatchCloud": "Despatch Cloud",
   "about": "About",
   "projects": {
-    "title": "Projects",
+    "title": "Personal Projects",
     "comingSoon": "More projects on the way!",
     "comingSoonMessage": "This isn't an exhaustive list of my projects. I'm constantly working on new and exciting ones. I'll be updating this section soon with more of my work. Stay tuned!",
     "description": "I'm currently working on some innovative web applications and tools. Check back soon to see a showcase of my latest work in frontend development, including projects using Vue.js, React, and more.",
     "portfolioSite": {
       "title": "egmn.dev",
       "description": "My personal portfolio website built with Vue.js, Nuxt.js, and Tailwind CSS. Features responsive design, dark mode, and internationalization."
-    }
+    },
+    "findepMoney": {
+      "title": "findep.money",
+      "description": "Findep Money is a comprehensive tool designed to help users track their financial portfolio, aiming for financial independence and early retirement. It is a progressive web app (PWA), adhering to local-first principles. It ensures seamless functionality and data availability across both mobile and desktop platforms, providing a fast, reliable, and user-friendly experience while prioritizing data privacy and offline accessibility. Used technologies: Nuxt, PrimeVue, PowerSync, Tailwind CSS, and more."
+    },
+    "inDevelopment": "In Development"
   },
   "bookmarks": {
     "title": "Bookmarks",
