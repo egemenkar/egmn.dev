@@ -155,6 +155,47 @@ const projects = [
       },
     ],
   },
+  {
+    id: 3,
+    titleKey: "projects.teletextPage.title",
+    descriptionKey: "projects.teletextPage.description",
+    url: null,
+    tools: [
+      {
+        name: "Next.js",
+        icon: "i-simple-icons-nextdotjs",
+        url: "https://nextjs.org/",
+      },
+      {
+        name: "Tailwind CSS",
+        icon: "i-simple-icons-tailwindcss",
+        url: "https://tailwindcss.com/",
+      },
+    ],
+  },
+  {
+    id: 4,
+    titleKey: "projects.chargingStations.title",
+    descriptionKey: "projects.chargingStations.description",
+    url: null,
+    tools: [
+      {
+        name: "React Native",
+        icon: "i-simple-icons-react",
+        url: "https://reactnative.dev/",
+      },
+      {
+        name: "Expo",
+        icon: "i-simple-icons-expo",
+        url: "https://expo.dev/",
+      },
+      {
+        name: "Nativewind",
+        icon: "i-simple-icons-nativewind",
+        url: "https://nativewind.dev/",
+      },
+    ],
+  },
   // Add more projects here as needed
 ];
 

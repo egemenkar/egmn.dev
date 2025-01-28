@@ -21,7 +21,15 @@
     },
     "findepMoney": {
       "title": "findep.money",
-      "description": "Findep Money is a comprehensive tool designed to help users track their financial portfolio, aiming for financial independence and early retirement. It is a progressive web app (PWA), adhering to local-first principles. It ensures seamless functionality and data availability across both mobile and desktop platforms, providing a fast, reliable, and user-friendly experience while prioritizing data privacy and offline accessibility. Used technologies: Nuxt, PrimeVue, PowerSync, Tailwind CSS, and more."
+      "description": "Findep Money is a comprehensive tool designed to help users track their financial portfolio, aiming for financial independence and early retirement. It is a progressive web app (PWA), adhering to local-first principles. It ensures seamless functionality and data availability across both mobile and desktop platforms, providing a fast, reliable, and user-friendly experience while prioritizing data privacy and offline accessibility. Used technologies: Vue.js, Nuxt, PrimeVue, PowerSync, Tailwind CSS, and more."
+    },
+    "teletextPage": {
+      "title": "teletext.page",
+      "description": "Teletext Page is a project that aims to create a modern and functional teletext style page for individuals. Used technologies: React, Next.js, Tailwind CSS, and more."
+    },
+    "chargingStations": {
+      "title": "Charging Stations Mobile App",
+      "description": "Charging Stations is a mobile app that allows users to find charging stations for their electric vehicles. Used technologies: React Native, Expo, Nativewind CSS, and more."
     },
     "inDevelopment": "In Development"
   },
