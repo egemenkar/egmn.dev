@@ -49,7 +49,9 @@
                 v-if="!project.url"
                 class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-200"
               >
-                <span class="w-1.5 h-1.5 mr-1.5 rounded-full bg-emerald-500"></span>
+                <span
+                  class="w-1.5 h-1.5 mr-1.5 rounded-full bg-emerald-500"
+                ></span>
                 {{ t("projects.inDevelopment") }}
               </span>
               <a
@@ -60,7 +62,14 @@
                 class="text-gray-400 hover:text-white transition-colors duration-200"
                 @click.stop
               >
-                <UIcon name="i-simple-icons-github" class="w-6 h-6" />
+                <UIcon
+                  :name="
+                    project.url.includes('apps.apple.com')
+                      ? 'i-simple-icons-appstore'
+                      : 'i-simple-icons-github'
+                  "
+                  class="w-6 h-6"
+                />
               </a>
             </div>
           </div>
@@ -127,7 +136,35 @@ const projects = [
   },
   {
     id: 2,
-    titleKey: "projects.findepMoney.title",
+    titleKey: "projects.flickMark.title",
+    descriptionKey: "projects.flickMark.description",
+    url: "https://apps.apple.com/app/id6747580843",
+    tools: [
+      {
+        name: "Swift",
+        icon: "i-simple-icons-swift",
+        url: "https://developer.apple.com/swift/",
+      },
+      {
+        name: "iOS",
+        icon: "i-simple-icons-ios",
+        url: "https://developer.apple.com/ios/",
+      },
+      {
+        name: "Core ML",
+        icon: "i-simple-icons-apple",
+        url: "https://developer.apple.com/machine-learning/",
+      },
+      {
+        name: "Xcode",
+        icon: "i-simple-icons-xcode",
+        url: "https://developer.apple.com/xcode/",
+      },
+    ],
+  },
+  /*{
+      id: 3,
+      titleKey: "projects.findepMoney.title",
     descriptionKey: "projects.findepMoney.description",
     url: null,
     tools: [
@@ -156,7 +193,7 @@ const projects = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     titleKey: "projects.teletextPage.title",
     descriptionKey: "projects.teletextPage.description",
     url: null,
@@ -174,7 +211,7 @@ const projects = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     titleKey: "projects.chargingStations.title",
     descriptionKey: "projects.chargingStations.description",
     url: null,
@@ -195,7 +232,7 @@ const projects = [
         url: "https://nativewind.dev/",
       },
     ],
-  },
+  },*/
   // Add more projects here as needed
 ];
 
