@@ -67,7 +67,7 @@
         href="https://despatchcloud.com/"
         target="_blank"
         rel="noopener noreferrer"
-        class="text-white hover:text-blue-300 transition-colors duration-200 underline"
+        class="text-white hover:text-blue-300 transition-colors duration-200"
       >
         {{ $t("despatchCloud") }}
       </a>
@@ -77,25 +77,28 @@
     <p class="mt-4 text-center text-gray-400 max-w-md">
       {{ $t("intro2") }}
     </p>
-
-    
   </div>
 </template>
 
 <script setup>
 import { useI18n } from "vue-i18n";
 import { useLocalePath } from "vue-i18n-routing";
+import { useHead } from "#app";
 
 const { t } = useI18n();
 const localePath = useLocalePath();
 
 definePageMeta({
-  layout: 'home'
-})
+  layout: "home",
+});
 
 const links = [
   { name: "about", to: "/about", icon: "i-heroicons-user" },
-  { name: "projects.shortTitle", to: "/projects", icon: "i-heroicons-code-bracket" },
+  {
+    name: "projects.shortTitle",
+    to: "/projects",
+    icon: "i-heroicons-code-bracket",
+  },
   { name: "bookmarks.title", to: "/bookmarks", icon: "i-heroicons-bookmark" },
 ];
 

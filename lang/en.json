@@ -3,10 +3,10 @@
   "title": "Senior Frontend Developer",
   "greeting": "Hi there! 👋",
   "intro1": {
-    "before": "I'm a Senior Frontend Developer currently working at ",
+    "before": "I'm a Senior Frontend Developer currently working as Head of Frontend at ",
     "after": ". It's a software company focused on improving e-commerce operations, ensuring smooth and efficient processes for online businesses."
   },
-  "intro2": "I work with technologies like Vue.js, Nuxt.js, and React to build responsive, scalable web applications. With over 5 years of experience, I focus on creating seamless user experiences and integrating powerful tools to bring ideas to life.",
+  "intro2": "I work with technologies like Vue.js, Nuxt.js, and React to build responsive, scalable web applications. With 7 years of experience, I focus on creating seamless user experiences and integrating powerful tools to bring ideas to life.",
   "despatchCloud": "Despatch Cloud",
   "about": "About",
   "projects": {
@@ -17,7 +17,7 @@
     "description": "I'm currently working on some innovative web applications and tools. Check back soon to see a showcase of my latest work in frontend development, including projects using Vue.js, React, and more.",
     "portfolioSite": {
       "title": "egmn.dev",
-      "description": "My personal portfolio website built with Vue.js, Nuxt.js, and Tailwind CSS. Features responsive design, dark mode, and internationalization."
+      "description": "My personal portfolio website built with Vue.js, Nuxt.js, and Tailwind CSS. Features responsive design, dark mode, internationalization, and a Raindrop.io integration to showcase my bookmarks collection."
     },
     "flickMark": {
       "title": "FlickMark",

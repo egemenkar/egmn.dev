@@ -45,7 +45,7 @@
               </a>
             </div>
             <div class="flex items-center space-x-2">
-              <span
+              <!-- <span
                 v-if="!project.url"
                 class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-200"
               >
@@ -53,7 +53,7 @@
                   class="w-1.5 h-1.5 mr-1.5 rounded-full bg-emerald-500"
                 ></span>
                 {{ t("projects.inDevelopment") }}
-              </span>
+              </span> -->
               <a
                 v-if="project.url"
                 :href="project.url"
