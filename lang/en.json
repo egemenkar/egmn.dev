@@ -23,6 +23,10 @@
       "title": "FlickMark",
       "description": "An AI-powered iOS app for instant movie identification from screenshots and social media shares. Create smart watchlists and discover streaming availability worldwide. Features advanced scene recognition technology for quick film identification."
     },
+    "streakX": {
+      "title": "StreakX",
+      "description": "A Chrome extension that tracks your X (Twitter) posting streak like GitHub commits. Features real-time analytics of your activity, daily goal setting, and reply tracking to help you build consistent posting habits and maintain your social media presence."
+    },
     "findepMoney": {
       "title": "findep.money",
       "description": "Findep Money is a comprehensive tool designed to help users track their financial portfolio, aiming for financial independence and early retirement. It is a progressive web app (PWA), adhering to local-first principles. It ensures seamless functionality and data availability across both mobile and desktop platforms, providing a fast, reliable, and user-friendly experience while prioritizing data privacy and offline accessibility. Used technologies: Vue.js, Nuxt, PrimeVue, PowerSync, Tailwind CSS, and more."

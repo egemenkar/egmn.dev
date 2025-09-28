@@ -66,7 +66,9 @@
                   :name="
                     project.url.includes('apps.apple.com')
                       ? 'i-simple-icons-appstore'
-                      : 'i-simple-icons-github'
+                      : project.url.includes('github.com')
+                      ? 'i-simple-icons-github'
+                      : 'i-heroicons-globe-alt'
                   "
                   class="w-6 h-6"
                 />
@@ -162,8 +164,36 @@ const projects = [
       },
     ],
   },
+  {
+    id: 3,
+    titleKey: "projects.streakX.title",
+    descriptionKey: "projects.streakX.description",
+    url: "https://streakx.egmn.dev/",
+    tools: [
+      {
+        name: "Chrome Extension",
+        icon: "i-simple-icons-googlechrome",
+        url: "https://developer.chrome.com/docs/extensions/",
+      },
+      {
+        name: "JavaScript",
+        icon: "i-simple-icons-javascript",
+        url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+      },
+      {
+        name: "Nuxt.js",
+        icon: "i-simple-icons-nuxtdotjs",
+        url: "https://nuxt.com/",
+      },
+      {
+        name: "Vercel",
+        icon: "i-simple-icons-vercel",
+        url: "https://vercel.com/",
+      },
+    ],
+  },
   /*{
-      id: 3,
+      id: 4,
       titleKey: "projects.findepMoney.title",
     descriptionKey: "projects.findepMoney.description",
     url: null,
