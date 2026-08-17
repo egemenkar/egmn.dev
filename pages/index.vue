@@ -99,7 +99,6 @@ const links = [
     to: "/projects",
     icon: "i-heroicons-code-bracket",
   },
-  { name: "bookmarks.title", to: "/bookmarks", icon: "i-heroicons-bookmark" },
 ];
 
 // Remove the openDespatchCloudLink function

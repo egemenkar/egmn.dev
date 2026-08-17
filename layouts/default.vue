@@ -96,7 +96,6 @@ const route = useRoute()
 const links = [
   { name: 'about', to: '/about', icon: 'i-heroicons-user' },
   { name: 'projects.shortTitle', to: '/projects', icon: 'i-heroicons-code-bracket' },
-  { name: 'bookmarks.title', to: '/bookmarks', icon: 'i-heroicons-bookmark' },
 ]
 
 const isMenuOpen = ref(false)

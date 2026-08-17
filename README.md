@@ -8,8 +8,7 @@ This is the source code for my personal website, built with Nuxt 3 and Vue.js.
 - Dark mode
 - Internationalization (i18n) support
 - About me section
-- Projects showcase (soon)
-- Bookmarks collection
+- Projects showcase
 
 ## 🛠️ Technologies Used
 
@@ -17,17 +16,6 @@ This is the source code for my personal website, built with Nuxt 3 and Vue.js.
 - [Vue.js](https://vuejs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [i18n](https://i18n.nuxtjs.org/)
-
-### Bookmarks Page
-
-The bookmarks page uses the following technologies:
-
-- [Raindrop.io API](https://developer.raindrop.io/) for fetching and managing bookmarks
-- [vue-tweet](https://github.com/DannyFeliz/vue-tweet) for embedding tweets
-
-This feature was inspired by:
-- [briOS](https://github.com/brianlovin/briOS) by Brian Lovin
-- [onur.dev](https://github.com/suyalcinkaya/onur.dev) by Onur Şuyalçınkaya
 
 ## 🏗️ Setup
 

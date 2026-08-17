@@ -16,9 +16,4 @@ export default defineNuxtConfig({
     vueI18n: "./i18n.config.ts",
     detectBrowserLanguage: false,
   },
-  runtimeConfig: {
-    public: {
-      raindropApiToken: process.env.RAINDROP_API_TOKEN
-    }
-  }
 })

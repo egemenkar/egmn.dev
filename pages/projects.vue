@@ -45,15 +45,15 @@
               </a>
             </div>
             <div class="flex items-center space-x-2">
-              <!-- <span
-                v-if="!project.url"
+              <span
+                v-if="project.inDevelopment"
                 class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-200"
               >
                 <span
                   class="w-1.5 h-1.5 mr-1.5 rounded-full bg-emerald-500"
                 ></span>
                 {{ t("projects.inDevelopment") }}
-              </span> -->
+              </span>
               <a
                 v-if="project.url"
                 :href="project.url"
@@ -110,6 +110,74 @@ const showComingSoon = ref(false);
 const projects = [
   {
     id: 1,
+    titleKey: "projects.fomoFast.title",
+    descriptionKey: "projects.fomoFast.description",
+    url: "https://www.fomo.fast",
+    inDevelopment: true,
+    tools: [
+      {
+        name: "Swift",
+        icon: "i-simple-icons-swift",
+        url: "https://developer.apple.com/swift/",
+      },
+      {
+        name: "Next.js",
+        icon: "i-simple-icons-nextdotjs",
+        url: "https://nextjs.org/",
+      },
+      {
+        name: "Tailwind CSS",
+        icon: "i-simple-icons-tailwindcss",
+        url: "https://tailwindcss.com/",
+      },
+      {
+        name: "Supabase",
+        icon: "i-simple-icons-supabase",
+        url: "https://supabase.com/",
+      },
+      {
+        name: "Vercel",
+        icon: "i-simple-icons-vercel",
+        url: "https://vercel.com/",
+      },
+    ],
+  },
+  {
+    id: 2,
+    titleKey: "projects.rosterShift.title",
+    descriptionKey: "projects.rosterShift.description",
+    url: "https://www.rostershift.app",
+    inDevelopment: true,
+    tools: [
+      {
+        name: "Swift",
+        icon: "i-simple-icons-swift",
+        url: "https://developer.apple.com/swift/",
+      },
+      {
+        name: "Next.js",
+        icon: "i-simple-icons-nextdotjs",
+        url: "https://nextjs.org/",
+      },
+      {
+        name: "Tailwind CSS",
+        icon: "i-simple-icons-tailwindcss",
+        url: "https://tailwindcss.com/",
+      },
+      {
+        name: "Supabase",
+        icon: "i-simple-icons-supabase",
+        url: "https://supabase.com/",
+      },
+      {
+        name: "Vercel",
+        icon: "i-simple-icons-vercel",
+        url: "https://vercel.com/",
+      },
+    ],
+  },
+  {
+    id: 3,
     titleKey: "projects.portfolioSite.title",
     descriptionKey: "projects.portfolioSite.description",
     url: "https://github.com/egemenkar/egmn.dev",
@@ -137,7 +205,7 @@ const projects = [
     ],
   },
   {
-    id: 2,
+    id: 4,
     titleKey: "projects.flickMark.title",
     descriptionKey: "projects.flickMark.description",
     url: "https://apps.apple.com/app/id6747580843",
@@ -165,7 +233,7 @@ const projects = [
     ],
   },
   {
-    id: 3,
+    id: 5,
     titleKey: "projects.streakX.title",
     descriptionKey: "projects.streakX.description",
     url: "https://streakx.egmn.dev/",

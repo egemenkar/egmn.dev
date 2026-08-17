@@ -21,9 +21,6 @@
   "dependencies": {
     "@iconify-json/mdi": "^1.1.54",
     "@iconify-json/simple-icons": "^1.1.73",
-    "@nuxt/ui": "^2.9.0",
-    "axios": "^1.7.7",
-    "gsap": "^3.12.5",
-    "vue-tweet": "^2.3.1"
+    "@nuxt/ui": "^2.9.0"
   }
 }

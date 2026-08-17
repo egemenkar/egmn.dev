@@ -17,7 +17,15 @@
     "description": "I'm currently working on some innovative web applications and tools. Check back soon to see a showcase of my latest work in frontend development, including projects using Vue.js, React, and more.",
     "portfolioSite": {
       "title": "egmn.dev",
-      "description": "My personal portfolio website built with Vue.js, Nuxt.js, and Tailwind CSS. Features responsive design, dark mode, internationalization, and a Raindrop.io integration to showcase my bookmarks collection."
+      "description": "My personal portfolio website built with Vue.js, Nuxt.js, and Tailwind CSS. Features responsive design, dark mode, internationalization, and a projects showcase."
+    },
+    "fomoFast": {
+      "title": "Fomo Fast",
+      "description": "Intermittent fasting, but for your apps. Fomo Fast locks the feeds you doom scroll outside the windows you pick, hands you a daily allowance instead of an all or nothing block, and tracks the streak you build. An iOS app built on Screen Time and the Family Controls framework. The App Store release is on the way; the marketing site is live now, in five languages with a Supabase backed waitlist."
+    },
+    "rosterShift": {
+      "title": "RosterShift",
+      "description": "Shift planning for any team that runs on a rota: healthcare, security, manufacturing, hospitality, support desks. RosterShift replaces the spreadsheet and WhatsApp shuffle with one roster everyone can trust. An iOS app with the App Store release on the way; the marketing site is live now, with localized content in five languages, an MDX blog, legal pages, and a Supabase backed waitlist."
     },
     "flickMark": {
       "title": "FlickMark",
@@ -39,13 +47,7 @@
       "title": "Charging Stations Mobile App",
       "description": "Charging Stations is a mobile app that allows users to find charging stations for their electric vehicles. Used technologies: React Native, Expo, Nativewind CSS, and more."
     },
-    "inDevelopment": "In Development"
-  },
-  "bookmarks": {
-    "title": "Bookmarks",
-    "allBookmarks": "All Bookmarks",
-    "filterByCollection": "Filter by Collection",
-    "visitLink": "Visit Link"
+    "inDevelopment": "App in development"
   },
   "contact": "Contact",
   "backToHome": "Back to Home"

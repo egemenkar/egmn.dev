@@ -16,11 +16,6 @@ const links = [{
   icon: 'i-heroicons-code-bracket',
   iconClass: 'text-red-400',
   to: '/projects'
-}, {
-  label: 'Bookmarks',
-  icon: 'i-heroicons-bookmark',
-  iconClass: 'text-red-400',
-  to: '/bookmarks'
 }]
 </script>
 
