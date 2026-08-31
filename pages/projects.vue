@@ -232,34 +232,6 @@ const projects = [
       },
     ],
   },
-  {
-    id: 5,
-    titleKey: "projects.streakX.title",
-    descriptionKey: "projects.streakX.description",
-    url: "https://streakx.egmn.dev/",
-    tools: [
-      {
-        name: "Chrome Extension",
-        icon: "i-simple-icons-googlechrome",
-        url: "https://developer.chrome.com/docs/extensions/",
-      },
-      {
-        name: "JavaScript",
-        icon: "i-simple-icons-javascript",
-        url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-      },
-      {
-        name: "Nuxt.js",
-        icon: "i-simple-icons-nuxtdotjs",
-        url: "https://nuxt.com/",
-      },
-      {
-        name: "Vercel",
-        icon: "i-simple-icons-vercel",
-        url: "https://vercel.com/",
-      },
-    ],
-  },
   /*{
       id: 4,
       titleKey: "projects.findepMoney.title",
