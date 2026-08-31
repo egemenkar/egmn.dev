@@ -113,7 +113,6 @@ const projects = [
     titleKey: "projects.fomoFast.title",
     descriptionKey: "projects.fomoFast.description",
     url: "https://www.fomo.fast",
-    inDevelopment: true,
     tools: [
       {
         name: "Swift",
