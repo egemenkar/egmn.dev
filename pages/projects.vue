@@ -145,8 +145,7 @@ const projects = [
     id: 2,
     titleKey: "projects.rosterShift.title",
     descriptionKey: "projects.rosterShift.description",
-    url: "https://www.rostershift.app",
-    inDevelopment: true,
+    url: "https://apps.apple.com/us/app/shift-planner-rostershift/id6759160894",
     tools: [
       {
         name: "Swift",
