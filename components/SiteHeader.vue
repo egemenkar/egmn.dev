@@ -3,17 +3,17 @@ const route = useRoute();
 
 const toSection = (hash) => (route.path === "/" ? hash : `/${hash}`);
 const links = [
-  { label: "Work", hash: "#work" },
-  { label: "About", hash: "#about" },
-  { label: "Contact", hash: "#contact" },
+  { key: "nav.work", hash: "#work" },
+  { key: "nav.about", hash: "#about" },
+  { key: "nav.contact", hash: "#contact" },
 ];
 </script>
 
 <template>
   <header class="site-header">
-    <a class="skip-link" href="#main-content">Skip to content</a>
+    <a class="skip-link" href="#main-content">{{ $t("nav.skip") }}</a>
     <div class="page-container header-inner">
-      <NuxtLink class="wordmark focus-ring" to="/" aria-label="egmn.dev home">
+      <NuxtLink class="wordmark focus-ring" to="/" :aria-label="$t('nav.homeLabel')">
         egmn<span aria-hidden="true">.</span>
       </NuxtLink>
 
@@ -22,7 +22,7 @@ const links = [
           <ul class="nav-list">
             <li v-for="link in links" :key="link.hash">
               <NuxtLink class="nav-link focus-ring" :to="toSection(link.hash)">
-                {{ link.label }}
+                {{ $t(link.key) }}
               </NuxtLink>
             </li>
           </ul>

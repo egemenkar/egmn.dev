@@ -1,384 +1,204 @@
-<template>
-  <div class="container mx-auto space-y-4 px-4 sm:px-6 lg:px-8">
-    <h1 class="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6">
-      {{ t("projects.title") }}
-    </h1>
-    <TransitionGroup name="project-list" tag="div" class="grid gap-4 sm:gap-6">
-      <div
-        v-for="project in visibleProjects"
-        :key="project.id"
-        class="project-card bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden p-4 sm:p-6 text-left col-span-full"
-      >
-        <a
-          :href="project.url"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="block h-full relative z-10"
-        >
-          <h2 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-4 pr-8">
-            {{ t(project.titleKey) }}
-          </h2>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">
-            {{ t(project.descriptionKey) }}
-          </p>
-          <div class="flex items-center justify-between">
-            <div
-              class="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400"
-            >
-              <a
-                v-for="tool in project.tools"
-                :key="tool.name"
-                :href="tool.url"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="hover:text-white transition-colors duration-200"
-                :title="tool.name"
-                @click.stop
-              >
-                <UIcon v-if="tool.icon" :name="tool.icon" class="w-6 h-6" />
-                <img
-                  v-else
-                  :src="tool.logo"
-                  alt="Tool Logo"
-                  class="w-6 h-6 hover:brightness-200 transition-all duration-200"
-                />
-              </a>
-            </div>
-            <div class="flex items-center space-x-2">
-              <span
-                v-if="project.inDevelopment"
-                class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-200"
-              >
-                <span
-                  class="w-1.5 h-1.5 mr-1.5 rounded-full bg-emerald-500"
-                ></span>
-                {{ t("projects.inDevelopment") }}
-              </span>
-              <a
-                v-if="project.url"
-                :href="project.url"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-gray-400 hover:text-white transition-colors duration-200"
-                @click.stop
-              >
-                <UIcon
-                  :name="
-                    project.url.includes('apps.apple.com')
-                      ? 'i-simple-icons-appstore'
-                      : project.url.includes('github.com')
-                      ? 'i-simple-icons-github'
-                      : 'i-heroicons-globe-alt'
-                  "
-                  class="w-6 h-6"
-                />
-              </a>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div
-        v-if="showComingSoon"
-        :key="'coming-soon'"
-        class="project-card coming-soon bg-transparent dark:bg-transparent rounded-lg overflow-hidden text-left col-span-full"
-      >
-        <div
-          class="border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-lg p-4 sm:p-6 h-full"
-        >
-          <h2
-            class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-4 text-gray-500 dark:text-gray-400"
-          >
-            {{ t("projects.comingSoon") }}
-          </h2>
-          <p class="text-gray-400 dark:text-gray-500">
-            {{ t("projects.comingSoonMessage") }}
-          </p>
-        </div>
-      </div>
-    </TransitionGroup>
-  </div>
-</template>
-
 <script setup>
-import { ref, onMounted, computed } from "vue";
-import { useI18n } from "vue-i18n";
+import { projects } from "~/data/site.mjs";
 
-const { t } = useI18n();
-const showProjects = ref(false);
-const showComingSoon = ref(false);
-
-const projects = [
-  {
-    id: 1,
-    titleKey: "projects.fomoFast.title",
-    descriptionKey: "projects.fomoFast.description",
-    url: "https://www.fomo.fast",
-    tools: [
-      {
-        name: "Swift",
-        icon: "i-simple-icons-swift",
-        url: "https://developer.apple.com/swift/",
-      },
-      {
-        name: "Next.js",
-        icon: "i-simple-icons-nextdotjs",
-        url: "https://nextjs.org/",
-      },
-      {
-        name: "Tailwind CSS",
-        icon: "i-simple-icons-tailwindcss",
-        url: "https://tailwindcss.com/",
-      },
-      {
-        name: "Supabase",
-        icon: "i-simple-icons-supabase",
-        url: "https://supabase.com/",
-      },
-      {
-        name: "Vercel",
-        icon: "i-simple-icons-vercel",
-        url: "https://vercel.com/",
-      },
-    ],
-  },
-  {
-    id: 2,
-    titleKey: "projects.rosterShift.title",
-    descriptionKey: "projects.rosterShift.description",
-    url: "https://apps.apple.com/us/app/shift-planner-rostershift/id6759160894",
-    tools: [
-      {
-        name: "Swift",
-        icon: "i-simple-icons-swift",
-        url: "https://developer.apple.com/swift/",
-      },
-      {
-        name: "Next.js",
-        icon: "i-simple-icons-nextdotjs",
-        url: "https://nextjs.org/",
-      },
-      {
-        name: "Tailwind CSS",
-        icon: "i-simple-icons-tailwindcss",
-        url: "https://tailwindcss.com/",
-      },
-      {
-        name: "Supabase",
-        icon: "i-simple-icons-supabase",
-        url: "https://supabase.com/",
-      },
-      {
-        name: "Vercel",
-        icon: "i-simple-icons-vercel",
-        url: "https://vercel.com/",
-      },
-    ],
-  },
-  {
-    id: 3,
-    titleKey: "projects.portfolioSite.title",
-    descriptionKey: "projects.portfolioSite.description",
-    url: "https://github.com/egemenkar/egmn.dev",
-    tools: [
-      {
-        name: "Vue.js",
-        icon: "i-simple-icons-vuedotjs",
-        url: "https://vuejs.org/",
-      },
-      {
-        name: "Nuxt.js",
-        icon: "i-simple-icons-nuxtdotjs",
-        url: "https://nuxt.com/",
-      },
-      {
-        name: "Tailwind CSS",
-        icon: "i-simple-icons-tailwindcss",
-        url: "https://tailwindcss.com/",
-      },
-      {
-        name: "Vercel",
-        icon: "i-simple-icons-vercel",
-        url: "https://vercel.com/",
-      },
-    ],
-  },
-  {
-    id: 4,
-    titleKey: "projects.flickMark.title",
-    descriptionKey: "projects.flickMark.description",
-    url: "https://apps.apple.com/app/id6747580843",
-    tools: [
-      {
-        name: "Swift",
-        icon: "i-simple-icons-swift",
-        url: "https://developer.apple.com/swift/",
-      },
-      {
-        name: "iOS",
-        icon: "i-simple-icons-ios",
-        url: "https://developer.apple.com/ios/",
-      },
-      {
-        name: "Core ML",
-        icon: "i-simple-icons-apple",
-        url: "https://developer.apple.com/machine-learning/",
-      },
-      {
-        name: "Xcode",
-        icon: "i-simple-icons-xcode",
-        url: "https://developer.apple.com/xcode/",
-      },
-    ],
-  },
-  /*{
-      id: 4,
-      titleKey: "projects.findepMoney.title",
-    descriptionKey: "projects.findepMoney.description",
-    url: null,
-    tools: [
-      {
-        name: "Nuxt.js",
-        icon: "i-simple-icons-nuxtdotjs",
-        url: "https://nuxt.com/",
-      },
-      {
-        name: "PrimeVue",
-        icon: null,
-        logo: "/images/primevue.svg",
-        url: "https://primevue.org/",
-      },
-      {
-        name: "PowerSync",
-        icon: null,
-        logo: "/images/powersync.svg",
-        url: "https://www.powersync.com/",
-      },
-      {
-        name: "Tailwind CSS",
-        icon: "i-simple-icons-tailwindcss",
-        url: "https://tailwindcss.com/",
-      },
-    ],
-  },
-  {
-    id: 4,
-    titleKey: "projects.teletextPage.title",
-    descriptionKey: "projects.teletextPage.description",
-    url: null,
-    tools: [
-      {
-        name: "Next.js",
-        icon: "i-simple-icons-nextdotjs",
-        url: "https://nextjs.org/",
-      },
-      {
-        name: "Tailwind CSS",
-        icon: "i-simple-icons-tailwindcss",
-        url: "https://tailwindcss.com/",
-      },
-    ],
-  },
-  {
-    id: 5,
-    titleKey: "projects.chargingStations.title",
-    descriptionKey: "projects.chargingStations.description",
-    url: null,
-    tools: [
-      {
-        name: "React Native",
-        icon: "i-simple-icons-react",
-        url: "https://reactnative.dev/",
-      },
-      {
-        name: "Expo",
-        icon: "i-simple-icons-expo",
-        url: "https://expo.dev/",
-      },
-      {
-        name: "Nativewind",
-        icon: "i-simple-icons-nativewind",
-        url: "https://nativewind.dev/",
-      },
-    ],
-  },*/
-  // Add more projects here as needed
-];
-
-const visibleProjects = computed(() => (showProjects.value ? projects : []));
-
-onMounted(() => {
-  setTimeout(() => {
-    showProjects.value = true;
-  }, 100);
-
-  setTimeout(() => {
-    showComingSoon.value = true;
-  }, 600); // Delay the appearance of the "Coming Soon" card
+useSeoMeta({
+  title: "Projects | Egemen Kar",
+  description:
+    "Selected independent apps and web projects by frontend lead and app maker Egemen Kar.",
 });
 </script>
 
+<template>
+  <div class="page-container detail-page projects-page">
+    <header class="detail-header">
+      <p class="section-label">{{ $t("projectsPage.label") }}</p>
+      <h1 class="detail-title">{{ $t("projectsPage.title") }}</h1>
+      <p class="detail-intro">{{ $t("projectsPage.intro") }}</p>
+    </header>
+
+    <section class="detail-section" aria-labelledby="projects-title">
+      <h2 id="projects-title" class="visually-hidden">{{ $t("projectsPage.title") }}</h2>
+      <div class="projects-list">
+        <article v-for="(project, index) in projects" :key="project.id" class="project-item">
+          <div class="project-number" aria-hidden="true">
+            {{ String(index + 1).padStart(2, "0") }}
+          </div>
+          <img
+            v-if="project.icon"
+            class="project-icon"
+            :src="project.icon"
+            :alt="project.iconAlt"
+            width="88"
+            height="88"
+            loading="lazy"
+          />
+          <div v-else class="project-monogram" aria-hidden="true">
+            {{ project.title.slice(0, 1) }}
+          </div>
+          <div class="project-copy">
+            <p class="project-category">{{ project.category }}</p>
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.detailDescription }}</p>
+            <a
+              class="text-link"
+              :href="project.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              :aria-label="`${project.destinationLabel} (${$t('projectsPage.newTab')})`"
+            >
+              {{ project.destinationLabel }} ↗
+            </a>
+          </div>
+          <img
+            v-if="project.preview"
+            class="project-preview motion-transform"
+            :src="project.preview"
+            :alt="project.previewAlt"
+            width="442"
+            height="960"
+            loading="lazy"
+          />
+        </article>
+      </div>
+    </section>
+
+    <ContactFooter />
+  </div>
+</template>
+
 <style scoped>
-.project-list-enter-active,
-.project-list-leave-active {
-  transition: all 0.5s ease;
-}
-.project-list-enter-from,
-.project-list-leave-to {
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.project-card {
-  position: relative;
-  transition: all 0.3s ease;
-  display: inline-block;
-  width: 100%;
-  break-inside: avoid;
-  cursor: pointer;
-}
-
-.project-card::after {
-  content: "";
+.visually-hidden {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(255, 255, 255, 0.05);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+.projects-list {
+  border-top: 1px solid var(--color-divider);
 }
 
-.project-card:hover::after {
-  opacity: 1;
+.project-item {
+  display: grid;
+  grid-template-columns: 36px 88px minmax(0, 1fr) 100px;
+  gap: 26px;
+  align-items: center;
+  min-height: 218px;
+  padding-block: 28px;
+  border-bottom: 1px solid var(--color-divider);
 }
 
-.coming-soon {
-  cursor: default;
-  opacity: 0.7;
-  transition: all 0.3s ease;
+.project-number,
+.project-category {
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
 }
 
-.coming-soon:hover {
-  transform: none;
-  box-shadow: none;
-  opacity: 1;
+.project-icon,
+.project-monogram {
+  width: 88px;
+  height: 88px;
+  border-radius: 22px;
 }
 
-.coming-soon::after {
-  display: none;
+.project-icon {
+  object-fit: cover;
 }
 
-.coming-soon > div {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.project-monogram {
+  display: grid;
+  place-items: center;
+  background: var(--color-surface);
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.project-category,
+.project-copy p,
+.project-copy h3 {
+  margin: 0;
+}
+
+.project-copy h3 {
+  margin-top: 4px;
+  font-size: 1.5rem;
+  font-weight: 780;
+  letter-spacing: -0.04em;
+}
+
+.project-copy > p:not(.project-category) {
+  max-width: 600px;
+  margin-top: 5px;
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+.project-copy .text-link {
+  margin-top: 14px;
+}
+
+.project-preview {
+  width: 82px;
+  max-height: 178px;
+  border-radius: 12px;
+  object-fit: cover;
+  object-position: top;
+  box-shadow: var(--shadow-preview);
+  transform: rotate(3deg);
+}
+
+.detail-section + .contact-footer {
+  margin-top: 20px;
+}
+
+@media (max-width: 767px) {
+  .project-item {
+    grid-template-columns: 28px 60px minmax(0, 1fr);
+    gap: 16px;
+    min-height: 0;
+    align-items: start;
+    padding-block: 24px;
+  }
+
+  .project-icon,
+  .project-monogram {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+  }
+
+  .project-preview {
+    display: none;
+  }
+
+  .project-copy h3 {
+    font-size: 1.25rem;
+  }
+
+  .project-copy > p:not(.project-category) {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 389px) {
+  .project-item {
+    grid-template-columns: 52px minmax(0, 1fr);
+  }
+
+  .project-number {
+    display: none;
+  }
+
+  .project-icon,
+  .project-monogram {
+    width: 52px;
+    height: 52px;
+  }
 }
 </style>

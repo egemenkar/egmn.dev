@@ -40,8 +40,8 @@ test("homepage exposes the required semantic sections and copy", () => {
   assert.match(read("components/SelectedWork.vue"), /id="work"/);
   assert.match(read("components/AboutSummary.vue"), /id="about"/);
   assert.match(read("components/ContactFooter.vue"), /id="contact"/);
-  assert.match(read("components/IntroHero.vue"), /Building/);
-  assert.match(read("components/IntroHero.vue"), /useful things/);
+  assert.match(read("components/IntroHero.vue"), /home\.hero\.titleLineOne/);
+  assert.match(read("components/IntroHero.vue"), /home\.hero\.titleLineTwo/);
 });
 
 test("project previews keep destination and preview controls separate", () => {
@@ -51,4 +51,41 @@ test("project previews keep destination and preview controls separate", () => {
   assert.match(row, /aria-controls/);
   assert.match(row, /target="_blank"/);
   assert.match(row, /<\/a>[\s\S]*<button/);
+});
+
+test("detail routes consume canonical content and preserve complete sections", () => {
+  const about = read("pages/about.vue");
+  const projects = read("pages/projects.vue");
+
+  assert.match(about, /from "~\/data\/site\.mjs"/);
+  assert.match(projects, /from "~\/data\/site\.mjs"/);
+  assert.match(about, /aboutPage\.workTitle/);
+  assert.match(about, /aboutPage\.educationTitle/);
+  assert.match(projects, /projectsPage\.title/);
+});
+
+test("new interface copy is available through the English locale", () => {
+  const messages = JSON.parse(read("lang/en.json"));
+
+  assert.equal(messages.nav?.work, "Work");
+  assert.equal(messages.home?.hero?.titleLineOne, "Building");
+  assert.equal(messages.home?.work?.preview, "Preview");
+  assert.equal(messages.home?.contact?.heading, "Have something in mind?");
+});
+
+test("visible source copy does not contain em dash characters", () => {
+  for (const path of [
+    "data/site.mjs",
+    "lang/en.json",
+    "components/IntroHero.vue",
+    "components/ProjectRow.vue",
+    "components/SelectedWork.vue",
+    "components/AboutSummary.vue",
+    "components/ContactFooter.vue",
+    "pages/index.vue",
+    "pages/about.vue",
+    "pages/projects.vue",
+  ]) {
+    assert.doesNotMatch(read(path), /—/, `${path} contains an em dash`);
+  }
 });

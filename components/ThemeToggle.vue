@@ -1,8 +1,9 @@
 <script setup>
+const { t } = useI18n();
 const colorMode = useColorMode();
 const isDark = computed(() => colorMode.value === "dark");
 const label = computed(() =>
-  isDark.value ? "Switch to light theme" : "Switch to dark theme",
+  isDark.value ? t("theme.switchToLight") : t("theme.switchToDark"),
 );
 
 const toggleTheme = () => {

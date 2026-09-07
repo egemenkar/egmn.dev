@@ -20,8 +20,8 @@ const togglePreview = (projectId) => {
 <template>
   <section id="work" class="selected-work" aria-labelledby="work-title">
     <div class="section-heading">
-      <p id="work-title" class="section-label">01 / Selected work</p>
-      <NuxtLink class="all-projects-link" to="/projects">All projects ↗</NuxtLink>
+      <p id="work-title" class="section-label">{{ $t("home.work.label") }}</p>
+      <NuxtLink class="all-projects-link" to="/projects">{{ $t("home.work.allProjects") }}</NuxtLink>
     </div>
 
     <div class="work-layout">

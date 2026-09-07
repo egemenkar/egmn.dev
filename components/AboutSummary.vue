@@ -6,10 +6,8 @@ const summaryExperience = experience.slice(0, 3);
 
 <template>
   <section id="about" class="about-summary" aria-labelledby="about-title">
-    <p class="section-label">02 / A little about me</p>
-    <h2 id="about-title">
-      I lead frontend teams, build my own products, and share what I learn along the way.
-    </h2>
+    <p class="section-label">{{ $t("home.about.label") }}</p>
+    <h2 id="about-title">{{ $t("home.about.heading") }}</h2>
 
     <div class="experience-list">
       <article v-for="item in summaryExperience" :key="`${item.company}-${item.role}`" class="experience-row">
@@ -19,7 +17,7 @@ const summaryExperience = experience.slice(0, 3);
       </article>
     </div>
 
-    <NuxtLink class="text-link background-link" to="/about">Full background ↗</NuxtLink>
+    <NuxtLink class="text-link background-link" to="/about">{{ $t("home.about.fullBackground") }}</NuxtLink>
   </section>
 </template>
 

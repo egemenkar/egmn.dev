@@ -6,14 +6,18 @@ import { contact, socialLinks } from "~/data/site.mjs";
   <footer id="contact" class="contact-footer" aria-labelledby="contact-title">
     <div class="contact-top">
       <div>
-        <h2 id="contact-title">Have something in mind?</h2>
-        <a class="contact-link" :href="`mailto:${contact.email}`">Let’s talk ↗</a>
+        <h2 id="contact-title">{{ $t("home.contact.heading") }}</h2>
+        <a class="contact-link" :href="`mailto:${contact.email}`">{{ $t("home.contact.link") }}</a>
       </div>
-      <p class="contact-note" aria-hidden="true">Good ideas<br />in better<br />company.</p>
+      <p class="contact-note" aria-hidden="true">
+        {{ $t("home.contact.noteLineOne") }}<br />
+        {{ $t("home.contact.noteLineTwo") }}<br />
+        {{ $t("home.contact.noteLineThree") }}
+      </p>
     </div>
 
     <div class="contact-bottom">
-      <nav aria-label="Social links">
+      <nav :aria-label="$t('home.contact.socialLabel')">
         <ul>
           <li v-for="link in socialLinks" :key="link.label">
             <a

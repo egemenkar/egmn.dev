@@ -5,7 +5,7 @@
         <img
           class="portrait"
           src="/images/profile.jpg"
-          alt="Egemen Kar wearing a cap and sunglasses outdoors"
+          :alt="$t('home.hero.portraitAlt')"
           width="512"
           height="512"
           loading="eager"
@@ -15,21 +15,19 @@
           <path d="m24 4 4.5 14.7L44 17l-12.4 9.2L37 41 24 32.3 11 41l5.4-14.8L4 17l15.5 1.7L24 4Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="3" />
         </svg>
       </div>
-      <p class="portrait-note" aria-hidden="true">Always building.</p>
+      <p class="portrait-note" aria-hidden="true">{{ $t("home.hero.note") }}</p>
     </div>
 
     <div class="intro-copy">
       <h1 id="intro-title">
-        <span>Building</span>
-        <span>useful things<span class="accent">.</span></span>
+        <span>{{ $t("home.hero.titleLineOne") }}</span>
+        <span>{{ $t("home.hero.titleLineTwo") }}<span class="accent">.</span></span>
       </h1>
-      <p class="intro-lead">
-        I’m Egemen, a frontend lead and independent app maker based in Istanbul.
-      </p>
-      <p class="intro-role">Currently leading frontend at Despatch Cloud.</p>
+      <p class="intro-lead">{{ $t("home.hero.intro") }}</p>
+      <p class="intro-role">{{ $t("home.hero.role") }}</p>
       <div class="intro-links">
-        <a class="text-link" href="#about">More about me ↗</a>
-        <a class="text-link" href="#contact">Say hello ↗</a>
+        <a class="text-link" href="#about">{{ $t("home.hero.aboutLink") }}</a>
+        <a class="text-link" href="#contact">{{ $t("home.hero.contactLink") }}</a>
       </div>
     </div>
   </section>

@@ -35,7 +35,7 @@ const previewId = computed(() => `preview-${props.project.id}`);
         :href="project.url"
         target="_blank"
         rel="noopener noreferrer"
-        :aria-label="`${project.destinationLabel} (opens in a new tab)`"
+        :aria-label="`${project.destinationLabel} (${$t('home.work.newTab')})`"
       >
         <span class="project-name">{{ project.title }}</span>
         <span class="project-description">{{ project.description }}</span>
@@ -51,7 +51,7 @@ const previewId = computed(() => `preview-${props.project.id}`);
         :aria-controls="previewId"
         @click="emit('toggle-preview', project.id)"
       >
-        {{ expanded ? "Close preview" : "Preview" }}
+        {{ expanded ? $t("home.work.closePreview") : $t("home.work.preview") }}
       </button>
 
       <div v-if="project.preview" v-show="expanded" :id="previewId" class="mobile-preview">

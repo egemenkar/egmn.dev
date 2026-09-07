@@ -1,50 +1,84 @@
 {
   "name": "Egemen Kar",
-  "title": "Senior Frontend Developer",
-  "greeting": "Hi there! 👋",
-  "intro1": {
-    "before": "I'm a Senior Frontend Developer currently working as Head of Frontend at ",
-    "after": ". It's a software company focused on improving e-commerce operations, ensuring smooth and efficient processes for online businesses."
-  },
-  "intro2": "I work with technologies like Vue.js, Nuxt.js, and React to build responsive, scalable web applications. With 7 years of experience, I focus on creating seamless user experiences and integrating powerful tools to bring ideas to life.",
-  "despatchCloud": "Despatch Cloud",
+  "title": "Frontend Lead & App Maker",
   "about": "About",
+  "contact": "Contact",
+  "backToHome": "Back to home",
+  "nav": {
+    "skip": "Skip to content",
+    "work": "Work",
+    "about": "About",
+    "contact": "Contact",
+    "homeLabel": "egmn.dev home"
+  },
+  "theme": {
+    "switchToLight": "Switch to light theme",
+    "switchToDark": "Switch to dark theme"
+  },
+  "home": {
+    "hero": {
+      "titleLineOne": "Building",
+      "titleLineTwo": "useful things",
+      "intro": "I’m Egemen, a frontend lead and independent app maker based in Istanbul.",
+      "role": "Currently leading frontend at Despatch Cloud.",
+      "aboutLink": "More about me ↗",
+      "contactLink": "Say hello ↗",
+      "portraitAlt": "Egemen Kar wearing a cap and sunglasses outdoors",
+      "note": "Always building."
+    },
+    "work": {
+      "label": "01 / Selected work",
+      "allProjects": "All projects ↗",
+      "preview": "Preview",
+      "closePreview": "Close preview",
+      "newTab": "opens in a new tab"
+    },
+    "about": {
+      "label": "02 / A little about me",
+      "heading": "I lead frontend teams, build my own products, and share what I learn along the way.",
+      "fullBackground": "Full background ↗"
+    },
+    "contact": {
+      "heading": "Have something in mind?",
+      "link": "Let’s talk ↗",
+      "socialLabel": "Social links",
+      "noteLineOne": "Good ideas",
+      "noteLineTwo": "in better",
+      "noteLineThree": "company."
+    }
+  },
+  "aboutPage": {
+    "label": "03 / About",
+    "title": "A little more context.",
+    "intro": "I build frontend systems, lead teams, and turn independent ideas into products people can use.",
+    "workTitle": "Work experience",
+    "educationTitle": "Education"
+  },
+  "projectsPage": {
+    "label": "03 / Projects",
+    "title": "Selected projects.",
+    "intro": "Independent apps and experiments shaped around focused, useful experiences.",
+    "visit": "Visit project",
+    "newTab": "opens in a new tab"
+  },
   "projects": {
     "title": "Personal Projects",
     "shortTitle": "Projects",
-    "comingSoon": "More projects on the way!",
-    "comingSoonMessage": "This isn't an exhaustive list of my projects. I'm constantly working on new and exciting ones. I'll be updating this section soon with more of my work. Stay tuned!",
-    "description": "I'm currently working on some innovative web applications and tools. Check back soon to see a showcase of my latest work in frontend development, including projects using Vue.js, React, and more.",
-    "portfolioSite": {
-      "title": "egmn.dev",
-      "description": "My personal portfolio website built with Vue.js, Nuxt.js, and Tailwind CSS. Features responsive design, dark mode, internationalization, and a projects showcase."
-    },
     "fomoFast": {
       "title": "Fomo Fast",
-      "description": "Intermittent fasting, but for your apps. Fomo Fast locks the feeds you doom scroll outside the windows you pick, hands you a daily allowance instead of an all or nothing block, and tracks the streak you build. An iOS app built on Screen Time and the Family Controls framework. The App Store release is on the way; the marketing site is live now, in five languages with a Supabase backed waitlist."
+      "description": "Intermittent fasting for distracting apps, with feed windows, daily allowances, and focus streaks. Available on the App Store."
     },
     "rosterShift": {
       "title": "RosterShift",
-      "description": "Shift planning for any team that runs on a rota: healthcare, security, manufacturing, hospitality, support desks. RosterShift replaces the spreadsheet and WhatsApp shuffle with one roster everyone can trust. Out now on the App Store, with a marketing site in five languages carrying an MDX blog and legal pages."
+      "description": "Shift planning for teams that need fair rotas, clear requests, and one published schedule. Available on the App Store."
     },
     "flickMark": {
       "title": "FlickMark",
-      "description": "An AI-powered iOS app for instant movie identification from screenshots and social media shares. Create smart watchlists and discover streaming availability worldwide. Features advanced scene recognition technology for quick film identification."
+      "description": "Movie identification, watchlists, and streaming availability in one iOS app."
     },
-    "findepMoney": {
-      "title": "findep.money",
-      "description": "Findep Money is a comprehensive tool designed to help users track their financial portfolio, aiming for financial independence and early retirement. It is a progressive web app (PWA), adhering to local-first principles. It ensures seamless functionality and data availability across both mobile and desktop platforms, providing a fast, reliable, and user-friendly experience while prioritizing data privacy and offline accessibility. Used technologies: Vue.js, Nuxt, PrimeVue, PowerSync, Tailwind CSS, and more."
-    },
-    "teletextPage": {
-      "title": "teletext.page",
-      "description": "Teletext Page is a project that aims to create a modern and functional teletext style page for individuals. Used technologies: React, Next.js, Tailwind CSS, and more."
-    },
-    "chargingStations": {
-      "title": "Charging Stations Mobile App",
-      "description": "Charging Stations is a mobile app that allows users to find charging stations for their electric vehicles. Used technologies: React Native, Expo, Nativewind CSS, and more."
-    },
-    "inDevelopment": "App in development"
-  },
-  "contact": "Contact",
-  "backToHome": "Back to Home"
+    "portfolioSite": {
+      "title": "egmn.dev",
+      "description": "My personal portfolio built with Nuxt and Vue."
+    }
+  }
 }
