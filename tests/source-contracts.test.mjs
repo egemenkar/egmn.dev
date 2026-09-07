@@ -103,8 +103,8 @@ test("new interface copy is available through the English locale", () => {
   assert.equal("titleLineTwo" in messages.home.hero, false);
   assert.equal(messages.home?.work?.preview, "Preview");
   assert.equal(messages.home?.contact?.heading, "Have something in mind?");
-  assert.equal(messages.home?.contact?.noteLineOne, "Adjusting");
-  assert.equal(messages.home?.contact?.noteLineTwo, "the sails.");
+  assert.equal(messages.home?.contact?.noteLineOne, "Still learning");
+  assert.equal(messages.home?.contact?.noteLineTwo, "the winds.");
 });
 
 test("visible source copy does not contain em dash characters", () => {
