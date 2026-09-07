@@ -33,7 +33,10 @@ export default defineNuxtConfig({
         { property: "og:url", content: "https://egmn.dev" },
         { name: "twitter:card", content: "summary" },
       ],
-      link: [{ rel: "canonical", href: "https://egmn.dev" }],
+      link: [
+        { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+        { rel: "canonical", href: "https://egmn.dev" },
+      ],
     },
   },
 })

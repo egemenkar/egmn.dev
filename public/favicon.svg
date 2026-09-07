@@ -1,1 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72"><g transform="translate(0,4)" fill="none" stroke="#22c55e" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"><path d="M32,60 Q34,44 36,25"/><path d="M36,25 Q16,6 4,25"/><path d="M36,25 Q21,7 12,37"/><path d="M36,25 Q26,2 36,6"/><path d="M36,25 Q56,6 68,25"/><path d="M36,25 Q51,7 60,37"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+  <title>Sailboat</title>
+  <rect width="64" height="64" rx="14" fill="#f7f5f0" />
+  <g
+    id="sailboat"
+    fill="none"
+    stroke="#171814"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2.8"
+  >
+    <path d="M32 10v31M29 15 15 39h14V15ZM35 19l14 20H35V19Z" />
+    <path
+      d="M32 11c5-4 10-3 14 0-6 0-9 2-14 5"
+      stroke="#f4774b"
+    />
+    <path d="M11 43c13 2 28 2 42 0l-6 8c-10 3-21 3-30 0l-6-8Z" />
+    <path
+      id="waves"
+      d="M7 57c4-3 8-3 12 0s8 3 12 0 8-3 12 0 8 3 14 0"
+    />
+  </g>
+</svg>

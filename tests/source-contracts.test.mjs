@@ -13,6 +13,18 @@ test("global style tokens and color-mode metadata are registered", () => {
   assert.match(read("assets/css/main.css"), /prefers-reduced-motion/);
 });
 
+test("the browser icon uses the sailing doodle", () => {
+  const config = read("nuxt.config.ts");
+  const favicon = read("public/favicon.svg");
+
+  assert.match(config, /rel:\s*"icon"[\s\S]*type:\s*"image\/svg\+xml"[\s\S]*href:\s*"\/favicon\.svg"/);
+  assert.match(favicon, /<title>Sailboat<\/title>/);
+  assert.match(favicon, /id="sailboat"/);
+  assert.match(favicon, /id="waves"/);
+  assert.match(favicon, /#f4774b/i);
+  assert.doesNotMatch(favicon, /#22c55e/i);
+});
+
 test("shared navigation exposes homepage sections and a theme action", () => {
   const header = read("components/SiteHeader.vue");
 
