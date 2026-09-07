@@ -1,33 +1,27 @@
 <template>
-  <div class="custom-scrollbar">
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
-  </div>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
 
-<style>
-html, body {
-  scrollbar-width: none;  /* Firefox */
-  -ms-overflow-style: none;  /* Internet Explorer 10+ */
-}
-
-html::-webkit-scrollbar, 
-body::-webkit-scrollbar { 
-  width: 0;
-  height: 0;
-  display: none;  /* Safari and Chrome */
-}
-
-.custom-scrollbar {
-  overflow-y: auto;
-  scrollbar-width: none;  /* Firefox */
-  -ms-overflow-style: none;  /* Internet Explorer 10+ */
-}
-
-.custom-scrollbar::-webkit-scrollbar { 
-  width: 0;
-  height: 0;
-  display: none;  /* Safari and Chrome */
-}
-</style>
+<script setup>
+useHead({
+  titleTemplate: (title) => title || "Egemen Kar | Frontend Lead & App Maker",
+  meta: [
+    {
+      name: "description",
+      content:
+        "Frontend lead and independent app maker based in Istanbul. Explore my apps, work, and ideas.",
+    },
+    {
+      property: "og:title",
+      content: "Egemen Kar | Frontend Lead & App Maker",
+    },
+    {
+      property: "og:description",
+      content:
+        "Frontend lead and independent app maker based in Istanbul. Explore my apps, work, and ideas.",
+    },
+  ],
+});
+</script>
