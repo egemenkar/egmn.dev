@@ -39,13 +39,13 @@ Project, social, and experience data will live in one typed module so the homepa
 
 The header links to `#work`, `#about`, and `#contact`. The logo links to the top. Navigation stays visible and compact on mobile rather than introducing a drawer.
 
-The desktop hero uses a portrait-left, content-right composition. The final headline is `Probably working on something.` with its period in orange. It wraps naturally at each viewport without authored line breaks. Supporting copy reads `I’m Egemen, a frontend lead and independent app maker based in Istanbul.` and keeps `Currently leading frontend at Despatch Cloud.` as the secondary line. This supersedes the earlier hero wording while keeping the tone personal, understated, and slightly playful. The existing `profile.jpg` is the primary portrait because no separately approved doodle asset exists. Mobile places a smaller portrait above the heading so the introduction remains visible without excessive scrolling.
+The desktop hero uses a portrait-left, content-right composition. The final headline is `Probably working on something.` with its period in orange. It wraps naturally at each viewport without authored line breaks. Supporting copy reads `I’m Egemen, a frontend lead and independent app maker based in Istanbul.` and keeps `Currently leading frontend at Despatch Cloud.` as the secondary line. The portrait-side handwritten note reads `Build. Ship. Repeat.` The existing `profile.jpg` remains the primary portrait. Mobile places a smaller portrait above the heading so the introduction remains visible without excessive scrolling.
 
 Selected work contains Fomo Fast, RosterShift, and FlickMark in that order. Each row is independently keyboard accessible and links to a verified real destination. A desktop preview column appears only for products with a real screenshot. Hover and focus update that reserved preview region without changing layout height. Mobile uses a separate expandable Preview button only when a screenshot exists. The destination link always remains a distinct action, and no nested interactive elements are used.
 
 The About section includes the supplied positioning statement and three factual experience rows: Head of Frontend at Despatch Cloud, Senior Frontend Developer at Despatch Cloud, and Frontend Developer at Rightyon. The complete existing work and education content remains available at `/about`.
 
-The contact footer uses the repository's current email, GitHub, and LinkedIn destinations. An X link is included only if a verified destination is found. Location is shown as Istanbul, Türkiye.
+The contact footer uses the repository's current email, GitHub, and LinkedIn destinations. An X link is included only if a verified destination is found. Location is shown as Istanbul, Türkiye. Its handwritten motto reads `Adjusting the sails.` beside a small line-drawn sailboat and wave doodle; the decorative composition stays compact on desktop and mobile.
 
 ## Detail Routes
 

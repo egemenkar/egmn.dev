@@ -41,8 +41,12 @@ test("homepage exposes the required semantic sections and copy", () => {
   assert.match(read("components/AboutSummary.vue"), /id="about"/);
   assert.match(read("components/ContactFooter.vue"), /id="contact"/);
   const hero = read("components/IntroHero.vue");
+  const contact = read("components/ContactFooter.vue");
   assert.match(hero, /home\.hero\.title/);
   assert.doesNotMatch(hero, /home\.hero\.titleLine(?:One|Two)/);
+  assert.match(contact, /home\.contact\.note/);
+  assert.match(contact, /class="sailboat-doodle"/);
+  assert.doesNotMatch(contact, /home\.contact\.noteLine(?:One|Two|Three)/);
 });
 
 test("project previews keep destination and preview controls separate", () => {
@@ -78,10 +82,15 @@ test("new interface copy is available through the English locale", () => {
     "I’m Egemen, a frontend lead and independent app maker based in Istanbul.",
   );
   assert.equal(messages.home?.hero?.role, "Currently leading frontend at Despatch Cloud.");
+  assert.equal(messages.home?.hero?.note, "Build. Ship. Repeat.");
   assert.equal("titleLineOne" in messages.home.hero, false);
   assert.equal("titleLineTwo" in messages.home.hero, false);
   assert.equal(messages.home?.work?.preview, "Preview");
   assert.equal(messages.home?.contact?.heading, "Have something in mind?");
+  assert.equal(messages.home?.contact?.note, "Adjusting the sails.");
+  assert.equal("noteLineOne" in messages.home.contact, false);
+  assert.equal("noteLineTwo" in messages.home.contact, false);
+  assert.equal("noteLineThree" in messages.home.contact, false);
 });
 
 test("visible source copy does not contain em dash characters", () => {

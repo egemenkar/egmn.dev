@@ -9,11 +9,17 @@ import { contact, socialLinks } from "~/data/site.mjs";
         <h2 id="contact-title">{{ $t("home.contact.heading") }}</h2>
         <a class="contact-link" :href="`mailto:${contact.email}`">{{ $t("home.contact.link") }}</a>
       </div>
-      <p class="contact-note" aria-hidden="true">
-        {{ $t("home.contact.noteLineOne") }}<br />
-        {{ $t("home.contact.noteLineTwo") }}<br />
-        {{ $t("home.contact.noteLineThree") }}
-      </p>
+      <div class="contact-note" aria-hidden="true">
+        <span>{{ $t("home.contact.note") }}</span>
+        <svg class="sailboat-doodle" viewBox="0 0 140 78">
+          <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8">
+            <path d="M69 12v39M65 18 38 48h27V18ZM73 23l25 25H73V23Z" />
+            <path class="doodle-accent" d="M69 13c8-6 14-4 19 0-8 0-13 2-19 5" />
+            <path d="M29 53c25 4 53 4 80 0l-11 12c-18 5-40 5-58 0L29 53Z" />
+            <path d="M14 72c8-5 15-5 23 0 8 5 15 5 23 0 8-5 15-5 23 0 8 5 15 5 23 0 7-5 14-5 21 0" />
+          </g>
+        </svg>
+      </div>
     </div>
 
     <div class="contact-bottom">
@@ -86,12 +92,30 @@ h2 {
 }
 
 .contact-note {
-  margin: 0 26px 0 0;
+  display: grid;
+  width: 170px;
+  justify-items: center;
+  margin: 0 18px 0 0;
   color: var(--color-muted);
   font-family: cursive;
-  font-size: 0.95rem;
+  font-size: 1rem;
   line-height: 1.2;
-  transform: rotate(-8deg);
+  transform: rotate(-4deg);
+}
+
+.contact-note span {
+  white-space: nowrap;
+}
+
+.sailboat-doodle {
+  width: 132px;
+  height: auto;
+  margin-top: 2px;
+  overflow: visible;
+}
+
+.doodle-accent {
+  stroke: var(--color-decorative);
 }
 
 .contact-bottom {
@@ -127,8 +151,15 @@ h2 {
     padding-block: 38px 28px;
   }
 
+  .contact-top {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 28px;
+  }
+
   .contact-note {
-    display: none;
+    align-self: flex-end;
+    margin-right: 4px;
   }
 
   .contact-bottom {

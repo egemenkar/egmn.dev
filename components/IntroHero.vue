@@ -85,6 +85,7 @@
   font-family: cursive;
   font-size: 1rem;
   transform: rotate(-4deg);
+  white-space: nowrap;
 }
 
 h1 {

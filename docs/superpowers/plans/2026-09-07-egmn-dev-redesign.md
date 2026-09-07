@@ -347,7 +347,7 @@ Expected: FAIL because the homepage section components do not exist.
 
 - [ ] **Step 2: Implement `IntroHero`**
 
-Render a single naturally wrapping `h1` with `Probably working on something.`, an orange accent period, the concise frontend-lead introduction, the muted Despatch Cloud line, and `More about me ↗` and `Say hello ↗` links. Do not author fixed headline line breaks. Render `/images/profile.jpg` at 512 by 512 with `fetchpriority="high"`, `loading="eager"`, descriptive alt text, a circular editorial crop, one CSS-drawn orange star, and an `Always building.` note hidden below tablet width.
+Render a single naturally wrapping `h1` with `Probably working on something.`, an orange accent period, the concise frontend-lead introduction, the muted Despatch Cloud line, and `More about me ↗` and `Say hello ↗` links. Do not author fixed headline line breaks. Render `/images/profile.jpg` at 512 by 512 with `fetchpriority="high"`, `loading="eager"`, descriptive alt text, a circular editorial crop, one CSS-drawn orange star, and a `Build. Ship. Repeat.` note hidden below tablet width.
 
 - [ ] **Step 3: Implement selected work and preview behavior**
 
@@ -359,7 +359,7 @@ Render a single naturally wrapping `h1` with `Probably working on something.`, a
 
 `AboutSummary` renders label `02 / A LITTLE ABOUT ME`, the approved lead sentence, three compact rows from the canonical experience data, and `Full background ↗` to `/about`.
 
-`ContactFooter` renders `Have something in mind?`, `Let’s talk ↗` as a mail link, verified social links, and `Istanbul, Türkiye`. Decorative copy is limited to `Good ideas in better company.` and hidden on mobile.
+`ContactFooter` renders `Have something in mind?`, `Let’s talk ↗` as a mail link, verified social links, and `Istanbul, Türkiye`. The decorative composition uses `Adjusting the sails.` with a compact line-drawn sailboat and wave, visible on desktop and mobile.
 
 - [ ] **Step 5: Compose the homepage and metadata**
 
