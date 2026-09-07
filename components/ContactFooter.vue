@@ -10,7 +10,10 @@ import { contact, socialLinks } from "~/data/site.mjs";
         <a class="contact-link" :href="`mailto:${contact.email}`">{{ $t("home.contact.link") }}</a>
       </div>
       <div class="contact-note" aria-hidden="true">
-        <span>{{ $t("home.contact.note") }}</span>
+        <span class="contact-note-copy">
+          <span>{{ $t("home.contact.noteLineOne") }}</span>
+          <span>{{ $t("home.contact.noteLineTwo") }}</span>
+        </span>
         <svg class="sailboat-doodle" viewBox="0 0 140 78">
           <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8">
             <path d="M69 12v39M65 18 38 48h27V18ZM73 23l25 25H73V23Z" />
@@ -103,14 +106,19 @@ h2 {
   transform: rotate(-4deg);
 }
 
-.contact-note span {
+.contact-note-copy {
+  display: grid;
+  justify-items: center;
+}
+
+.contact-note-copy span {
   white-space: nowrap;
 }
 
 .sailboat-doodle {
-  width: 132px;
+  width: 116px;
   height: auto;
-  margin-top: 2px;
+  margin-top: 4px;
   overflow: visible;
 }
 

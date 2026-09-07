@@ -59,9 +59,10 @@ test("homepage exposes the required semantic sections and copy", () => {
   assert.match(hero, /from "~\/data\/site\.mjs"/);
   assert.match(hero, /mailto:\$\{contact\.email\}/);
   assert.doesNotMatch(hero, /href="#contact"/);
-  assert.match(contact, /home\.contact\.note/);
+  assert.match(contact, /home\.contact\.noteLineOne/);
+  assert.match(contact, /home\.contact\.noteLineTwo/);
   assert.match(contact, /class="sailboat-doodle"/);
-  assert.doesNotMatch(contact, /home\.contact\.noteLine(?:One|Two|Three)/);
+  assert.match(contact, /\.sailboat-doodle\s*\{[^}]*width:\s*116px/s);
 });
 
 test("project previews keep destination and preview controls separate", () => {
@@ -102,10 +103,8 @@ test("new interface copy is available through the English locale", () => {
   assert.equal("titleLineTwo" in messages.home.hero, false);
   assert.equal(messages.home?.work?.preview, "Preview");
   assert.equal(messages.home?.contact?.heading, "Have something in mind?");
-  assert.equal(messages.home?.contact?.note, "Adjusting the sails.");
-  assert.equal("noteLineOne" in messages.home.contact, false);
-  assert.equal("noteLineTwo" in messages.home.contact, false);
-  assert.equal("noteLineThree" in messages.home.contact, false);
+  assert.equal(messages.home?.contact?.noteLineOne, "Adjusting");
+  assert.equal(messages.home?.contact?.noteLineTwo, "the sails.");
 });
 
 test("visible source copy does not contain em dash characters", () => {

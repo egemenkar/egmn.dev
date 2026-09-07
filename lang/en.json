@@ -41,7 +41,8 @@
       "heading": "Have something in mind?",
       "link": "Let’s talk ↗",
       "socialLabel": "Social links",
-      "note": "Adjusting the sails."
+      "noteLineOne": "Adjusting",
+      "noteLineTwo": "the sails."
     }
   },
   "aboutPage": {
