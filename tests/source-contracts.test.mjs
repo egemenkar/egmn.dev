@@ -44,6 +44,9 @@ test("homepage exposes the required semantic sections and copy", () => {
   const contact = read("components/ContactFooter.vue");
   assert.match(hero, /home\.hero\.title/);
   assert.doesNotMatch(hero, /home\.hero\.titleLine(?:One|Two)/);
+  assert.match(hero, /from "~\/data\/site\.mjs"/);
+  assert.match(hero, /mailto:\$\{contact\.email\}/);
+  assert.doesNotMatch(hero, /href="#contact"/);
   assert.match(contact, /home\.contact\.note/);
   assert.match(contact, /class="sailboat-doodle"/);
   assert.doesNotMatch(contact, /home\.contact\.noteLine(?:One|Two|Three)/);

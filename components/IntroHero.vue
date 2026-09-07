@@ -1,3 +1,7 @@
+<script setup>
+import { contact } from "~/data/site.mjs";
+</script>
+
 <template>
   <section class="intro-hero" aria-labelledby="intro-title">
     <div class="portrait-column">
@@ -24,7 +28,7 @@
       <p class="intro-role">{{ $t("home.hero.role") }}</p>
       <div class="intro-links">
         <a class="text-link" href="#about">{{ $t("home.hero.aboutLink") }}</a>
-        <a class="text-link" href="#contact">{{ $t("home.hero.contactLink") }}</a>
+        <a class="text-link" :href="`mailto:${contact.email}`">{{ $t("home.hero.contactLink") }}</a>
       </div>
     </div>
   </section>
