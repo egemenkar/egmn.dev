@@ -3,7 +3,7 @@
     class="min-h-screen flex flex-col items-center justify-center p-4 relative"
   >
     <UAvatar
-      src="https://avatars.githubusercontent.com/u/85014459?v=4"
+      src="/images/profile.jpg"
       :alt="$t('name')"
       size="3xl"
       class="mb-4"
