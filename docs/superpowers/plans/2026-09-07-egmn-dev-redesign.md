@@ -347,7 +347,7 @@ Expected: FAIL because the homepage section components do not exist.
 
 - [ ] **Step 2: Implement `IntroHero`**
 
-Render a single naturally wrapping `h1` with `One thing led to another.`, an orange accent period, the final former-naval-officer introduction, the muted Despatch Cloud line, and `More about me ↗` and `Say hello ↗` links. Do not author fixed headline line breaks. Render `/images/profile.jpg` at 512 by 512 with `fetchpriority="high"`, `loading="eager"`, descriptive alt text, a circular editorial crop, one CSS-drawn orange star, and an `Always building.` note hidden below tablet width.
+Render a single naturally wrapping `h1` with `Probably working on something.`, an orange accent period, the concise frontend-lead introduction, the muted Despatch Cloud line, and `More about me ↗` and `Say hello ↗` links. Do not author fixed headline line breaks. Render `/images/profile.jpg` at 512 by 512 with `fetchpriority="high"`, `loading="eager"`, descriptive alt text, a circular editorial crop, one CSS-drawn orange star, and an `Always building.` note hidden below tablet width.
 
 - [ ] **Step 3: Implement selected work and preview behavior**
 
