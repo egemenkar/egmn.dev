@@ -2,7 +2,7 @@
 const links = [{
   label: 'Egemen Kar',
   avatar: {
-    src: 'https://avatars.githubusercontent.com/u/85014459?v=4',
+    src: '/images/profile.jpg',
   },
   // badge: 'Frontend Developer',
   to: '/'

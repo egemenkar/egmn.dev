@@ -4,7 +4,7 @@
       <div class="max-w-3xl mx-auto flex items-center justify-between px-4">
         <NuxtLink to="/" class="flex items-center space-x-3">
           <UAvatar
-            src="https://avatars.githubusercontent.com/u/85014459?v=4"
+            src="/images/profile.jpg"
             alt="Egemen Kar"
             size="sm"
           />
@@ -51,7 +51,7 @@
             @click="isMenuOpen = false"
           >
             <UAvatar
-      src="https://avatars.githubusercontent.com/u/85014459?v=4"
+      src="/images/profile.jpg"
       :alt="$t('name')"
       size="3xl"
       class="mb-4"
