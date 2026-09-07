@@ -47,11 +47,14 @@ test("homepage exposes the required semantic sections and copy", () => {
 
 test("project previews keep destination and preview controls separate", () => {
   const row = read("components/ProjectRow.vue");
+  const work = read("components/SelectedWork.vue");
 
   assert.match(row, /aria-expanded/);
   assert.match(row, /aria-controls/);
   assert.match(row, /target="_blank"/);
   assert.match(row, /<\/a>[\s\S]*<button/);
+  assert.match(row, /loading="lazy"/);
+  assert.match(work, /loading="lazy"/);
 });
 
 test("detail routes consume canonical content and preserve complete sections", () => {

@@ -10,8 +10,8 @@ export const projects = [
     destinationLabel: "Visit Fomo Fast",
     icon: "/images/projects/fomo-fast-icon.jpg",
     iconAlt: "Fomo Fast app icon",
-    preview: "/images/projects/fomo-fast-preview.jpg",
-    previewAlt: "Fomo Fast screen showing focus progress",
+    preview: "/images/projects/fomo-fast-preview.png",
+    previewAlt: "Fomo Fast In Fast dashboard showing focus progress",
     featured: true,
   },
   {
@@ -25,8 +25,8 @@ export const projects = [
     destinationLabel: "Visit RosterShift",
     icon: "/images/projects/rostershift-icon.jpg",
     iconAlt: "RosterShift app icon",
-    preview: "/images/projects/rostershift-preview.jpg",
-    previewAlt: "RosterShift screen showing a team rota",
+    preview: "/images/projects/rostershift-preview.png",
+    previewAlt: "RosterShift admin dashboard showing the next duty and recent activity",
     featured: true,
   },
   {
@@ -40,8 +40,8 @@ export const projects = [
     destinationLabel: "View FlickMark on the App Store",
     icon: "/images/projects/flickmark-icon.jpg",
     iconAlt: "FlickMark app icon",
-    preview: "/images/projects/flickmark-preview.jpg",
-    previewAlt: "FlickMark screen showing movie discovery",
+    preview: "/images/projects/flickmark-preview.png",
+    previewAlt: "FlickMark home screen showing streaming movie recommendations",
     featured: true,
   },
   {
