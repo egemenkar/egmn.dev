@@ -40,8 +40,9 @@ test("homepage exposes the required semantic sections and copy", () => {
   assert.match(read("components/SelectedWork.vue"), /id="work"/);
   assert.match(read("components/AboutSummary.vue"), /id="about"/);
   assert.match(read("components/ContactFooter.vue"), /id="contact"/);
-  assert.match(read("components/IntroHero.vue"), /home\.hero\.titleLineOne/);
-  assert.match(read("components/IntroHero.vue"), /home\.hero\.titleLineTwo/);
+  const hero = read("components/IntroHero.vue");
+  assert.match(hero, /home\.hero\.title/);
+  assert.doesNotMatch(hero, /home\.hero\.titleLine(?:One|Two)/);
 });
 
 test("project previews keep destination and preview controls separate", () => {
@@ -68,7 +69,14 @@ test("new interface copy is available through the English locale", () => {
   const messages = JSON.parse(read("lang/en.json"));
 
   assert.equal(messages.nav?.work, "Work");
-  assert.equal(messages.home?.hero?.titleLineOne, "Building");
+  assert.equal(messages.home?.hero?.title, "One thing led to another");
+  assert.equal(
+    messages.home?.hero?.intro,
+    "I’m Egemen, a former naval officer, now a frontend lead and independent app maker based in Istanbul.",
+  );
+  assert.equal(messages.home?.hero?.role, "Currently leading frontend at Despatch Cloud.");
+  assert.equal("titleLineOne" in messages.home.hero, false);
+  assert.equal("titleLineTwo" in messages.home.hero, false);
   assert.equal(messages.home?.work?.preview, "Preview");
   assert.equal(messages.home?.contact?.heading, "Have something in mind?");
 });

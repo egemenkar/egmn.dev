@@ -14,7 +14,7 @@ This approach gives the homepage the character of the approved reference while k
 
 - Use an off-white light surface, near-black type, restrained orange accents, fine dividers, and generous whitespace.
 - Provide an accessible dark theme with equivalent hierarchy and contrast.
-- Use a compact text wordmark, editorial navigation, large two-line hero heading, real portrait, selected-work rows, concise career summary, and direct contact footer.
+- Use a compact text wordmark, editorial navigation, large naturally wrapping hero heading, real portrait, selected-work rows, concise career summary, and direct contact footer.
 - Use the reference proportions as guidance rather than reproducing exact coordinates.
 - Use a modern system sans stack and system monospace for labels and metadata. Avoid a new font dependency unless the existing project already includes one.
 - Keep animation limited to short opacity, color, and transform transitions. Disable nonessential motion under `prefers-reduced-motion`.
@@ -39,7 +39,7 @@ Project, social, and experience data will live in one typed module so the homepa
 
 The header links to `#work`, `#about`, and `#contact`. The logo links to the top. Navigation stays visible and compact on mobile rather than introducing a drawer.
 
-The desktop hero uses a portrait-left, content-right composition. The existing `profile.jpg` is the primary portrait because no separately approved doodle asset exists. Mobile places a smaller portrait above the heading so the introduction remains visible without excessive scrolling.
+The desktop hero uses a portrait-left, content-right composition. The final headline is `One thing led to another.` with its period in orange. It wraps naturally at each viewport without authored line breaks. Supporting copy reads `I’m Egemen, a former naval officer, now a frontend lead and independent app maker based in Istanbul.` and keeps `Currently leading frontend at Despatch Cloud.` as the secondary line. This supersedes the original hero wording while keeping the tone personal, understated, and slightly playful. The existing `profile.jpg` is the primary portrait because no separately approved doodle asset exists. Mobile places a smaller portrait above the heading so the introduction remains visible without excessive scrolling.
 
 Selected work contains Fomo Fast, RosterShift, and FlickMark in that order. Each row is independently keyboard accessible and links to a verified real destination. A desktop preview column appears only for products with a real screenshot. Hover and focus update that reserved preview region without changing layout height. Mobile uses a separate expandable Preview button only when a screenshot exists. The destination link always remains a distinct action, and no nested interactive elements are used.
 

@@ -19,10 +19,7 @@
     </div>
 
     <div class="intro-copy">
-      <h1 id="intro-title">
-        <span>{{ $t("home.hero.titleLineOne") }}</span>
-        <span>{{ $t("home.hero.titleLineTwo") }}<span class="accent">.</span></span>
-      </h1>
+      <h1 id="intro-title">{{ $t("home.hero.title") }}<span class="accent">.</span></h1>
       <p class="intro-lead">{{ $t("home.hero.intro") }}</p>
       <p class="intro-role">{{ $t("home.hero.role") }}</p>
       <div class="intro-links">
@@ -92,14 +89,11 @@
 
 h1 {
   margin: 0;
-  font-size: clamp(4rem, 6vw, 5rem);
+  font-size: clamp(3.7rem, 5.6vw, 4.7rem);
   font-weight: 850;
   letter-spacing: -0.072em;
   line-height: 0.94;
-}
-
-h1 > span {
-  display: block;
+  text-wrap: balance;
 }
 
 .accent {
@@ -133,7 +127,7 @@ h1 > span {
   }
 
   h1 {
-    font-size: clamp(3.5rem, 7vw, 4.3rem);
+    font-size: clamp(3.2rem, 6.5vw, 4rem);
   }
 }
 
@@ -158,7 +152,7 @@ h1 > span {
   }
 
   h1 {
-    font-size: clamp(2.65rem, 13vw, 3.6rem);
+    font-size: clamp(2.55rem, 12vw, 3.35rem);
     letter-spacing: -0.062em;
     line-height: 0.98;
   }

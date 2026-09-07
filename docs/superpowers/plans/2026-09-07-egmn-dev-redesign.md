@@ -336,8 +336,8 @@ test("homepage exposes the required semantic sections and copy", () => {
   assert.match(read("components/SelectedWork.vue"), /id="work"/);
   assert.match(read("components/AboutSummary.vue"), /id="about"/);
   assert.match(read("components/ContactFooter.vue"), /id="contact"/);
-  assert.match(read("components/IntroHero.vue"), /Building/);
-  assert.match(read("components/IntroHero.vue"), /useful things/);
+  assert.match(read("components/IntroHero.vue"), /home\.hero\.title/);
+  assert.doesNotMatch(read("components/IntroHero.vue"), /titleLine(?:One|Two)/);
 });
 ```
 
@@ -347,7 +347,7 @@ Expected: FAIL because the homepage section components do not exist.
 
 - [ ] **Step 2: Implement `IntroHero`**
 
-Render a single `h1` with separate `Building` and `useful things.` lines, an accent period, the exact PRD introduction, the muted Despatch Cloud line, and `More about me ↗` and `Say hello ↗` links. Render `/images/profile.jpg` at 512 by 512 with `fetchpriority="high"`, `loading="eager"`, descriptive alt text, a circular editorial crop, one CSS-drawn orange star, and an `Always building.` note hidden below tablet width.
+Render a single naturally wrapping `h1` with `One thing led to another.`, an orange accent period, the final former-naval-officer introduction, the muted Despatch Cloud line, and `More about me ↗` and `Say hello ↗` links. Do not author fixed headline line breaks. Render `/images/profile.jpg` at 512 by 512 with `fetchpriority="high"`, `loading="eager"`, descriptive alt text, a circular editorial crop, one CSS-drawn orange star, and an `Always building.` note hidden below tablet width.
 
 - [ ] **Step 3: Implement selected work and preview behavior**
 
