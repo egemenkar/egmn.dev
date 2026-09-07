@@ -89,3 +89,10 @@ test("visible source copy does not contain em dash characters", () => {
     assert.doesNotMatch(read(path), /—/, `${path} contains an em dash`);
   }
 });
+
+test("global document styles do not force horizontal overflow at 320 pixels", () => {
+  const css = read("assets/css/main.css");
+
+  assert.doesNotMatch(css, /html\s*\{[^}]*min-width:\s*320px/s);
+  assert.doesNotMatch(css, /body\s*\{[^}]*min-width:\s*320px/s);
+});

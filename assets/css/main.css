@@ -33,13 +33,11 @@
 }
 
 html {
-  min-width: 320px;
   scroll-behavior: smooth;
   background: var(--color-background);
 }
 
 body {
-  min-width: 320px;
   margin: 0;
   overflow-x: hidden;
   background: var(--color-background);
