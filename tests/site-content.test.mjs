@@ -71,8 +71,8 @@ test("career and contact data stay verified", async () => {
   assert.deepEqual(
     experience.slice(0, 3).map(({ company, role }) => [company, role]),
     [
-      ["Despatch Cloud", "Head of Frontend"],
-      ["Despatch Cloud", "Senior Frontend Developer"],
+      ["The Despatch Company", "Head of Frontend"],
+      ["The Despatch Company", "Senior Frontend Developer"],
       ["Rightyon", "Frontend Developer"],
     ],
   );

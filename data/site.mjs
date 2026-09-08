@@ -65,7 +65,7 @@ export const featuredProjects = projects.filter(({ featured }) => featured);
 
 export const experience = [
   {
-    company: "Despatch Cloud",
+    company: "The Despatch Company",
     role: "Head of Frontend",
     period: "Feb 2025 to present",
     location: "Remote, United Kingdom",
@@ -76,7 +76,7 @@ export const experience = [
     ],
   },
   {
-    company: "Despatch Cloud",
+    company: "The Despatch Company",
     role: "Senior Frontend Developer",
     period: "Apr 2023 to Feb 2025",
     location: "Remote, United Kingdom",

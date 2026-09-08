@@ -90,8 +90,8 @@ test("referenced local project media exists", () => {
 
 test("career and contact data stay verified", () => {
   assert.deepEqual(experience.slice(0, 3).map(({ company, role }) => [company, role]), [
-    ["Despatch Cloud", "Head of Frontend"],
-    ["Despatch Cloud", "Senior Frontend Developer"],
+    ["The Despatch Company", "Head of Frontend"],
+    ["The Despatch Company", "Senior Frontend Developer"],
     ["Rightyon", "Frontend Developer"],
   ]);
   assert.equal(contact.email, "egemenkar@gmail.com");
@@ -168,8 +168,8 @@ export const projects = [
 export const featuredProjects = projects.filter(({ featured }) => featured);
 
 export const experience = [
-  { company: "Despatch Cloud", role: "Head of Frontend", period: "Feb 2025 to present", location: "Remote, United Kingdom" },
-  { company: "Despatch Cloud", role: "Senior Frontend Developer", period: "Apr 2023 to Feb 2025", location: "Remote, United Kingdom" },
+  { company: "The Despatch Company", role: "Head of Frontend", period: "Feb 2025 to present", location: "Remote, United Kingdom" },
+  { company: "The Despatch Company", role: "Senior Frontend Developer", period: "Apr 2023 to Feb 2025", location: "Remote, United Kingdom" },
   { company: "Rightyon", role: "Frontend Developer", period: "Jan 2022 to Apr 2023", location: "Istanbul, Türkiye" },
   { company: "Freelance", role: "Full Stack Web Developer", period: "Apr 2018 to Jan 2022", location: "Istanbul, Türkiye" },
 ];
@@ -347,7 +347,7 @@ Expected: FAIL because the homepage section components do not exist.
 
 - [ ] **Step 2: Implement `IntroHero`**
 
-Render a single naturally wrapping `h1` with `Probably working on something.`, an orange accent period, the concise frontend-lead introduction, the muted Despatch Cloud line, and `More about me ↗` and `Say hello ↗` links. Do not author fixed headline line breaks. Render `/images/profile.jpg` at 512 by 512 with `fetchpriority="high"`, `loading="eager"`, descriptive alt text, a circular editorial crop, one CSS-drawn orange star, and a `Build. Ship. Repeat.` note hidden below tablet width.
+Render a single naturally wrapping `h1` with `Probably working on something.`, an orange accent period, the concise frontend-lead introduction, the muted The Despatch Company line, and `More about me ↗` and `Say hello ↗` links. Do not author fixed headline line breaks. Render `/images/profile.jpg` at 512 by 512 with `fetchpriority="high"`, `loading="eager"`, descriptive alt text, a circular editorial crop, one CSS-drawn orange star, and a `Build. Ship. Repeat.` note hidden below tablet width.
 
 - [ ] **Step 3: Implement selected work and preview behavior**
 

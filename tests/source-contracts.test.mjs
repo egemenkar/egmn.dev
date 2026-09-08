@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync } from "node:fs";
 import { test } from "node:test";
 
@@ -122,7 +123,7 @@ test("new interface copy is available through the English locale", () => {
     messages.home?.hero?.intro,
     "Hey there, I’m Egemen, a frontend lead and independent app maker based in Istanbul.",
   );
-  assert.equal(messages.home?.hero?.role, "Currently leading frontend at Despatch Cloud.");
+  assert.equal(messages.home?.hero?.role, "Currently leading frontend at The Despatch Company.");
   assert.equal(messages.home?.hero?.note, "Build. Ship. Repeat.");
   assert.equal("titleLineOne" in messages.home.hero, false);
   assert.equal("titleLineTwo" in messages.home.hero, false);
@@ -130,6 +131,19 @@ test("new interface copy is available through the English locale", () => {
   assert.equal(messages.home?.contact?.heading, "Have something in mind?");
   assert.equal(messages.home?.contact?.noteLineOne, "Still learning");
   assert.equal(messages.home?.contact?.noteLineTwo, "the winds.");
+});
+
+test("legacy company name is absent from tracked repository text", () => {
+  const legacyName = ["Despatch", "Cloud"].join(" ");
+  let matches = "";
+
+  try {
+    matches = execFileSync("git", ["grep", "-n", "-I", legacyName], { encoding: "utf8" });
+  } catch (error) {
+    if (error.status !== 1) throw error;
+  }
+
+  assert.equal(matches, "");
 });
 
 test("visible source copy does not contain em dash characters", () => {
