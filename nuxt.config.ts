@@ -36,6 +36,13 @@ export default defineNuxtConfig({
       link: [
         { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
         { rel: "canonical", href: "https://egmn.dev" },
+        {
+          rel: "preload",
+          as: "image",
+          href: "/images/profile.webp",
+          type: "image/webp",
+          fetchpriority: "high",
+        },
       ],
     },
   },

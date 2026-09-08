@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, statSync } from "node:fs";
 import { test } from "node:test";
 
 const read = (path) => {
@@ -24,6 +24,22 @@ test("the browser icon uses the sailing doodle", () => {
   assert.match(favicon, /id="waves"/);
   assert.match(favicon, /#f4774b/i);
   assert.doesNotMatch(favicon, /#22c55e/i);
+});
+
+test("the hero profile image is compact and discoverable from the initial document", () => {
+  const config = read("nuxt.config.ts");
+  const hero = read("components/IntroHero.vue");
+  const nav = read("components/NavMenu.vue");
+  const profilePath = "public/images/profile.webp";
+
+  assert.match(config, /rel:\s*"preload"[\s\S]*as:\s*"image"[\s\S]*href:\s*"\/images\/profile\.webp"/);
+  assert.match(config, /type:\s*"image\/webp"/);
+  assert.match(config, /fetchpriority:\s*"high"/);
+  assert.match(hero, /src="\/images\/profile\.webp"/);
+  assert.match(nav, /src:\s*['"]\/images\/profile\.webp['"]/);
+  assert.doesNotMatch(`${hero}\n${nav}`, /\/images\/profile\.jpg/);
+  assert.ok(existsSync(profilePath), `${profilePath} should exist`);
+  assert.ok(statSync(profilePath).size <= 40 * 1024, "profile.webp should stay at or below 40 KiB");
 });
 
 test("shared navigation exposes homepage sections and a theme action", () => {

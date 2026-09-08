@@ -8,7 +8,7 @@ import { contact } from "~/data/site.mjs";
       <div class="portrait-wrap">
         <img
           class="portrait"
-          src="/images/profile.jpg"
+          src="/images/profile.webp"
           :alt="$t('home.hero.portraitAlt')"
           width="512"
           height="512"
