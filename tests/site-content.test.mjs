@@ -84,7 +84,7 @@ test("career and contact data stay verified", async () => {
     location: "Türkiye, On-site",
     responsibilities: [
       "Served in the Turkish Navy across logistics, operations, and team coordination.",
-      "After more than a decade in uniform, I chose to change course and started building a new career in software.",
+      "After more than a decade in uniform, I voluntarily left to pursue a career in software.",
     ],
   });
   assert.equal(contact.email, "egemenkar@gmail.com");
