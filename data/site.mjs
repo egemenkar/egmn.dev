@@ -140,4 +140,5 @@ export const socialLinks = [
   { label: "GitHub", url: "https://github.com/egemenkar" },
   { label: "LinkedIn", url: "https://www.linkedin.com/in/egemen-kar/" },
   { label: "Email", url: `mailto:${contact.email}` },
+  { label: "X", url: "https://x.com/egmndev" },
 ];

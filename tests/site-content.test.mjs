@@ -79,6 +79,7 @@ test("career and contact data stay verified", async () => {
   assert.equal(contact.email, "egemenkar@gmail.com");
   assert.deepEqual(
     socialLinks.map(({ label }) => label),
-    ["GitHub", "LinkedIn", "Email"],
+    ["GitHub", "LinkedIn", "Email", "X"],
   );
+  assert.equal(socialLinks.find(({ label }) => label === "X")?.url, "https://x.com/egmndev");
 });
