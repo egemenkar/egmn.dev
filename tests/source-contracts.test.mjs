@@ -105,10 +105,10 @@ test("new interface copy is available through the English locale", () => {
   const messages = JSON.parse(read("lang/en.json"));
 
   assert.equal(messages.nav?.work, "Work");
-  assert.equal(messages.home?.hero?.title, "Probably working on something");
+  assert.equal(messages.home?.hero?.title, "Frontend lead. Independent maker");
   assert.equal(
     messages.home?.hero?.intro,
-    "I’m Egemen, a frontend lead and independent app maker based in Istanbul.",
+    "Greetings, I’m Egemen, a frontend lead and independent app maker based in Istanbul.",
   );
   assert.equal(messages.home?.hero?.role, "Currently leading frontend at Despatch Cloud.");
   assert.equal(messages.home?.hero?.note, "Build. Ship. Repeat.");
