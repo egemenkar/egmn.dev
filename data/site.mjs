@@ -122,11 +122,6 @@ export const experience = [
 
 export const education = [
   {
-    institution: "Selcuk University",
-    degree: "Bachelor's degree, Law",
-    year: "Oct 2021 to present",
-  },
-  {
     institution: "Anadolu University",
     degree: "Bachelor of Science, Management Information Systems",
     year: "2025",
@@ -137,6 +132,11 @@ export const education = [
     degree: "Associate of Science, Computer Programming",
     year: "2023",
     location: "Erzurum, Türkiye",
+  },
+  {
+    institution: "Selcuk University",
+    degree: "Bachelor's degree, Law",
+    year: "Oct 2021 to present",
   },
   {
     institution: "Turkish National Defense University",

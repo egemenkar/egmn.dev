@@ -98,7 +98,13 @@ test("career and contact data stay verified", async () => {
 test("education includes the current law degree without inventing a location", async () => {
   const { education } = await import(modulePath);
 
-  assert.deepEqual(education[0], {
+  assert.deepEqual(education.map(({ institution }) => institution), [
+    "Anadolu University",
+    "Ataturk University",
+    "Selcuk University",
+    "Turkish National Defense University",
+  ]);
+  assert.deepEqual(education[2], {
     institution: "Selcuk University",
     degree: "Bachelor's degree, Law",
     year: "Oct 2021 to present",
