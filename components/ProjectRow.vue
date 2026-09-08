@@ -17,13 +17,9 @@ const previewId = computed(() => `preview-${props.project.id}`);
     @focusin="emit('activate', project.id)"
   >
     <ProjectIconReveal
-      v-if="project.icon"
       class="project-icon"
       :project="project"
     />
-    <div v-else class="project-monogram" aria-hidden="true">
-      {{ project.title.slice(0, 1) }}
-    </div>
 
     <div class="project-copy">
       <a
@@ -73,19 +69,10 @@ const previewId = computed(() => `preview-${props.project.id}`);
   border-bottom: 1px solid var(--color-divider);
 }
 
-.project-icon,
-.project-monogram {
+.project-icon {
   width: 72px;
   height: 72px;
   border-radius: 19px;
-}
-
-.project-monogram {
-  display: grid;
-  place-items: center;
-  background: var(--color-surface);
-  font-size: 1.6rem;
-  font-weight: 800;
 }
 
 .project-copy {
@@ -152,8 +139,7 @@ const previewId = computed(() => `preview-${props.project.id}`);
     padding-block: 24px;
   }
 
-  .project-icon,
-  .project-monogram {
+  .project-icon {
     width: 54px;
     height: 54px;
     border-radius: 15px;

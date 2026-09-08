@@ -5,7 +5,11 @@ defineProps({
 </script>
 
 <template>
-  <span class="project-icon-reveal" :data-project-icon="project.id">
+  <span
+    class="project-icon-reveal"
+    :class="{ 'has-real-icon': project.icon }"
+    :data-project-icon="project.id"
+  >
     <svg
       v-if="project.id === 'fomo-fast'"
       class="project-icon-doodle"
@@ -32,7 +36,7 @@ defineProps({
     </svg>
 
     <svg
-      v-else
+      v-else-if="project.id === 'flickmark'"
       class="project-icon-doodle"
       viewBox="0 0 64 64"
       aria-hidden="true"
@@ -43,7 +47,23 @@ defineProps({
       </g>
     </svg>
 
+    <svg
+      v-else
+      id="portfolio-sailboat"
+      class="project-icon-doodle"
+      viewBox="0 0 64 64"
+      aria-hidden="true"
+    >
+      <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+        <path d="M32 10v31M29 15 15 39h14V15ZM35 19l14 20H35V19Z" />
+        <path d="M32 11c5-4 10-3 14 0-6 0-9 2-14 5" />
+        <path d="M11 43c13 2 28 2 42 0l-6 8c-10 3-21 3-30 0l-6-8Z" />
+        <path d="M7 57c4-3 8-3 12 0s8 3 12 0 8-3 12 0 8 3 14 0" />
+      </g>
+    </svg>
+
     <img
+      v-if="project.icon"
       class="project-icon-real"
       :src="project.icon"
       :alt="project.iconAlt"
@@ -96,10 +116,10 @@ defineProps({
   transform: rotate(3deg) scale(0.88);
 }
 
-:global(.project-row:hover .project-icon-doodle),
-:global(.project-row:focus-within .project-icon-doodle),
-:global(.project-item:hover .project-icon-doodle),
-:global(.project-item:focus-within .project-icon-doodle) {
+:global(.project-row:hover .has-real-icon .project-icon-doodle),
+:global(.project-row:focus-within .has-real-icon .project-icon-doodle),
+:global(.project-item:hover .has-real-icon .project-icon-doodle),
+:global(.project-item:focus-within .has-real-icon .project-icon-doodle) {
   opacity: 0;
   transform: rotate(-3deg) scale(1.06);
 }

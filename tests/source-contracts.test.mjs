@@ -82,8 +82,12 @@ test("project artwork starts as a monochrome doodle and reveals the real icon", 
 
   assert.match(read("components/ProjectRow.vue"), /<ProjectIconReveal/);
   assert.match(read("pages/projects.vue"), /<ProjectIconReveal/);
+  assert.doesNotMatch(read("components/ProjectRow.vue"), /project-monogram/);
+  assert.doesNotMatch(read("pages/projects.vue"), /project-monogram/);
   assert.match(icon, /class="project-icon-doodle"/);
   assert.match(icon, /class="project-icon-real"/);
+  assert.match(icon, /id="portfolio-sailboat"/);
+  assert.match(icon, /v-if="project\.icon"/);
   assert.match(icon, /:global\(\.project-row:hover \.project-icon-real\)/);
   assert.match(icon, /:global\(\.project-item:hover \.project-icon-real\)/);
   assert.match(icon, /:global\(\.project-row:focus-within \.project-icon-real\)/);

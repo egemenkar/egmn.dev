@@ -24,13 +24,9 @@ useSeoMeta({
             {{ String(index + 1).padStart(2, "0") }}
           </div>
           <ProjectIconReveal
-            v-if="project.icon"
             class="project-icon"
             :project="project"
           />
-          <div v-else class="project-monogram" aria-hidden="true">
-            {{ project.title.slice(0, 1) }}
-          </div>
           <div class="project-copy">
             <p class="project-category">{{ project.category }}</p>
             <h3>{{ project.title }}</h3>
@@ -96,19 +92,10 @@ useSeoMeta({
   font-size: 0.7rem;
 }
 
-.project-icon,
-.project-monogram {
+.project-icon {
   width: 88px;
   height: 88px;
   border-radius: 22px;
-}
-
-.project-monogram {
-  display: grid;
-  place-items: center;
-  background: var(--color-surface);
-  font-size: 1.8rem;
-  font-weight: 800;
 }
 
 .project-category,
@@ -158,8 +145,7 @@ useSeoMeta({
     padding-block: 24px;
   }
 
-  .project-icon,
-  .project-monogram {
+  .project-icon {
     width: 60px;
     height: 60px;
     border-radius: 16px;
@@ -187,8 +173,7 @@ useSeoMeta({
     display: none;
   }
 
-  .project-icon,
-  .project-monogram {
+  .project-icon {
     width: 52px;
     height: 52px;
   }
