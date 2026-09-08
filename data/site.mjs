@@ -137,6 +137,7 @@ export const education = [
     institution: "Selcuk University",
     degree: "Bachelor's degree, Law",
     year: "Oct 2021 to present",
+    location: "Konya, Türkiye",
   },
   {
     institution: "Turkish National Defense University",
