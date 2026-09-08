@@ -23,14 +23,10 @@ useSeoMeta({
           <div class="project-number" aria-hidden="true">
             {{ String(index + 1).padStart(2, "0") }}
           </div>
-          <img
+          <ProjectIconReveal
             v-if="project.icon"
             class="project-icon"
-            :src="project.icon"
-            :alt="project.iconAlt"
-            width="88"
-            height="88"
-            loading="lazy"
+            :project="project"
           />
           <div v-else class="project-monogram" aria-hidden="true">
             {{ project.title.slice(0, 1) }}
@@ -105,10 +101,6 @@ useSeoMeta({
   width: 88px;
   height: 88px;
   border-radius: 22px;
-}
-
-.project-icon {
-  object-fit: cover;
 }
 
 .project-monogram {

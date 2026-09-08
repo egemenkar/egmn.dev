@@ -16,14 +16,10 @@ const previewId = computed(() => `preview-${props.project.id}`);
     @mouseenter="emit('activate', project.id)"
     @focusin="emit('activate', project.id)"
   >
-    <img
+    <ProjectIconReveal
       v-if="project.icon"
       class="project-icon"
-      :src="project.icon"
-      :alt="project.iconAlt"
-      width="72"
-      height="72"
-      loading="lazy"
+      :project="project"
     />
     <div v-else class="project-monogram" aria-hidden="true">
       {{ project.title.slice(0, 1) }}
@@ -82,10 +78,6 @@ const previewId = computed(() => `preview-${props.project.id}`);
   width: 72px;
   height: 72px;
   border-radius: 19px;
-}
-
-.project-icon {
-  object-fit: cover;
 }
 
 .project-monogram {

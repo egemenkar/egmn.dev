@@ -77,6 +77,19 @@ test("project previews keep destination and preview controls separate", () => {
   assert.match(work, /loading="lazy"/);
 });
 
+test("project artwork starts as a monochrome doodle and reveals the real icon", () => {
+  const icon = read("components/ProjectIconReveal.vue");
+
+  assert.match(read("components/ProjectRow.vue"), /<ProjectIconReveal/);
+  assert.match(read("pages/projects.vue"), /<ProjectIconReveal/);
+  assert.match(icon, /class="project-icon-doodle"/);
+  assert.match(icon, /class="project-icon-real"/);
+  assert.match(icon, /:global\(\.project-row:hover \.project-icon-real\)/);
+  assert.match(icon, /:global\(\.project-item:hover \.project-icon-real\)/);
+  assert.match(icon, /:global\(\.project-row:focus-within \.project-icon-real\)/);
+  assert.match(icon, /:global\(\.project-item:focus-within \.project-icon-real\)/);
+});
+
 test("detail routes consume canonical content and preserve complete sections", () => {
   const about = read("pages/about.vue");
   const projects = read("pages/projects.vue");
