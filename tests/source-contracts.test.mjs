@@ -87,6 +87,13 @@ test("project artwork starts as a monochrome doodle and reveals the real icon", 
   assert.match(icon, /class="project-icon-doodle"/);
   assert.match(icon, /class="project-icon-real"/);
   assert.match(icon, /id="portfolio-sailboat"/);
+  assert.match(icon, /class="portfolio-sailboat-flag"/);
+  assert.match(icon, /\.portfolio-sailboat-flag\s*\{[\s\S]*transition:\s*stroke/);
+  assert.match(icon, /:global\(\.project-row:hover \.portfolio-sailboat-flag\)/);
+  assert.match(icon, /:global\(\.project-row:focus-within \.portfolio-sailboat-flag\)/);
+  assert.match(icon, /:global\(\.project-item:hover \.portfolio-sailboat-flag\)/);
+  assert.match(icon, /:global\(\.project-item:focus-within \.portfolio-sailboat-flag\)/);
+  assert.match(icon, /stroke:\s*var\(--color-accent\)/);
   assert.match(icon, /v-if="project\.icon"/);
   assert.match(icon, /:global\(\.project-row:hover \.project-icon-real\)/);
   assert.match(icon, /:global\(\.project-item:hover \.project-icon-real\)/);

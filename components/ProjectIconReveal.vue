@@ -56,7 +56,7 @@ defineProps({
     >
       <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
         <path d="M32 10v31M29 15 15 39h14V15ZM35 19l14 20H35V19Z" />
-        <path d="M32 11c5-4 10-3 14 0-6 0-9 2-14 5" />
+        <path class="portfolio-sailboat-flag" d="M32 11c5-4 10-3 14 0-6 0-9 2-14 5" />
         <path d="M11 43c13 2 28 2 42 0l-6 8c-10 3-21 3-30 0l-6-8Z" />
         <path d="M7 57c4-3 8-3 12 0s8 3 12 0 8-3 12 0 8 3 14 0" />
       </g>
@@ -102,6 +102,10 @@ defineProps({
   transform: rotate(-2deg) scale(0.94);
 }
 
+.portfolio-sailboat-flag {
+  transition: stroke 180ms ease;
+}
+
 [data-project-icon="rostershift"] .project-icon-doodle {
   transform: rotate(1.5deg) scale(0.93);
 }
@@ -130,5 +134,12 @@ defineProps({
 :global(.project-item:focus-within .project-icon-real) {
   opacity: 1;
   transform: none;
+}
+
+:global(.project-row:hover .portfolio-sailboat-flag),
+:global(.project-row:focus-within .portfolio-sailboat-flag),
+:global(.project-item:hover .portfolio-sailboat-flag),
+:global(.project-item:focus-within .portfolio-sailboat-flag) {
+  stroke: var(--color-accent);
 }
 </style>
