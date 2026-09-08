@@ -108,6 +108,16 @@ export const experience = [
       "Designed and developed custom WordPress websites.",
     ],
   },
+  {
+    company: "Turkish Navy",
+    role: "Supply Officer",
+    period: "Sep 2010 to Apr 2021",
+    location: "Türkiye, On-site",
+    responsibilities: [
+      "Served in the Turkish Navy across logistics, operations, and team coordination.",
+      "After more than a decade in uniform, I chose to change course and started building a new career in software.",
+    ],
+  },
 ];
 
 export const education = [

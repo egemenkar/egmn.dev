@@ -76,6 +76,17 @@ test("career and contact data stay verified", async () => {
       ["Rightyon", "Frontend Developer"],
     ],
   );
+  const navy = experience.find(({ company }) => company === "Turkish Navy");
+  assert.deepEqual(navy, {
+    company: "Turkish Navy",
+    role: "Supply Officer",
+    period: "Sep 2010 to Apr 2021",
+    location: "Türkiye, On-site",
+    responsibilities: [
+      "Served in the Turkish Navy across logistics, operations, and team coordination.",
+      "After more than a decade in uniform, I chose to change course and started building a new career in software.",
+    ],
+  });
   assert.equal(contact.email, "egemenkar@gmail.com");
   assert.deepEqual(
     socialLinks.map(({ label }) => label),
