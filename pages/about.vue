@@ -53,7 +53,7 @@ useSeoMeta({
           </div>
           <div class="education-meta">
             <time>{{ item.year }}</time>
-            <span>{{ item.location }}</span>
+            <span v-if="item.location">{{ item.location }}</span>
           </div>
         </article>
       </div>

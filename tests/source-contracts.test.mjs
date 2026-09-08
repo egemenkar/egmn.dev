@@ -98,6 +98,7 @@ test("detail routes consume canonical content and preserve complete sections", (
   assert.match(projects, /from "~\/data\/site\.mjs"/);
   assert.match(about, /aboutPage\.workTitle/);
   assert.match(about, /aboutPage\.educationTitle/);
+  assert.match(about, /v-if="item\.location"/);
   assert.match(projects, /projectsPage\.title/);
 });
 

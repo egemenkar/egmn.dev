@@ -94,3 +94,13 @@ test("career and contact data stay verified", async () => {
   );
   assert.equal(socialLinks.find(({ label }) => label === "X")?.url, "https://x.com/egmndev");
 });
+
+test("education includes the current law degree without inventing a location", async () => {
+  const { education } = await import(modulePath);
+
+  assert.deepEqual(education[0], {
+    institution: "Selcuk University",
+    degree: "Bachelor's degree, Law",
+    year: "Oct 2021 to present",
+  });
+});
