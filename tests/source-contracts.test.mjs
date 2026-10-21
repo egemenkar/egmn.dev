@@ -1,187 +1,125 @@
-import assert from "node:assert/strict";
-import { execFileSync } from "node:child_process";
-import { existsSync, readFileSync, statSync } from "node:fs";
-import { test } from "node:test";
+import assert from 'node:assert/strict'
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'
+import { test } from 'node:test'
 
 const read = (path) => {
-  assert.ok(existsSync(path), `${path} should exist`);
-  return readFileSync(path, "utf8");
-};
+  assert.ok(existsSync(path), `${path} should exist`)
+  return readFileSync(path, 'utf8')
+}
 
-test("global style tokens and color-mode metadata are registered", () => {
-  assert.match(read("nuxt.config.ts"), /assets\/css\/main\.css/);
-  assert.match(read("assets/css/main.css"), /--color-background:\s*#f7f5f0/i);
-  assert.match(read("assets/css/main.css"), /prefers-reduced-motion/);
-});
+const sourceFiles = [
+  'app.vue',
+  'error.vue',
+  ...readdirSync('components').map(file => `components/${file}`),
+  'pages/index.vue',
+  'pages/writing/index.vue',
+  'data/profile.ts',
+]
 
-test("the browser icon uses the sailing doodle", () => {
-  const config = read("nuxt.config.ts");
-  const favicon = read("public/favicon.svg");
+test('global tokens keep the warm base, green accent, dark mode and reduced motion', () => {
+  const css = read('assets/css/main.css')
 
-  assert.match(config, /rel:\s*"icon"[\s\S]*type:\s*"image\/svg\+xml"[\s\S]*href:\s*"\/favicon\.svg"/);
-  assert.match(favicon, /<title>Sailboat<\/title>/);
-  assert.match(favicon, /id="sailboat"/);
-  assert.match(favicon, /id="waves"/);
-  assert.match(favicon, /#f4774b/i);
-  assert.doesNotMatch(favicon, /#22c55e/i);
-});
+  assert.match(read('nuxt.config.ts'), /assets\/css\/main\.css/)
+  assert.match(css, /--color-page:\s*#f7f5f0/i)
+  assert.match(css, /--color-accent:\s*#1f3a34/i)
+  assert.match(css, /prefers-color-scheme: dark/)
+  assert.match(css, /data-theme="dark"/)
+  assert.match(css, /prefers-reduced-motion/)
+  assert.match(css, /:focus-visible/)
+})
 
-test("the hero profile image is compact and discoverable from the initial document", () => {
-  const config = read("nuxt.config.ts");
-  const hero = read("components/IntroHero.vue");
-  const nav = read("components/NavMenu.vue");
-  const profilePath = "public/images/profile.webp";
+test('the monospace font is self-hosted and preloaded', () => {
+  const css = read('assets/css/main.css')
 
-  assert.match(config, /rel:\s*"preload"[\s\S]*as:\s*"image"[\s\S]*href:\s*"\/images\/profile\.webp"/);
-  assert.match(config, /type:\s*"image\/webp"/);
-  assert.match(config, /fetchpriority:\s*"high"/);
-  assert.match(hero, /src="\/images\/profile\.webp"/);
-  assert.match(nav, /src:\s*['"]\/images\/profile\.webp['"]/);
-  assert.doesNotMatch(`${hero}\n${nav}`, /\/images\/profile\.jpg/);
-  assert.ok(existsSync(profilePath), `${profilePath} should exist`);
-  assert.ok(statSync(profilePath).size <= 40 * 1024, "profile.webp should stay at or below 40 KiB");
-});
-
-test("shared navigation exposes homepage sections and a theme action", () => {
-  const header = read("components/SiteHeader.vue");
-
-  assert.match(header, /#work/);
-  assert.match(header, /#about/);
-  assert.match(header, /#contact/);
-  assert.match(read("components/ThemeToggle.vue"), /aria-label/);
-});
-
-test("both layouts use the shared editorial shell", () => {
-  for (const path of ["layouts/default.vue", "layouts/home.vue"]) {
-    const layout = read(path);
-    assert.match(layout, /<SiteHeader/);
-    assert.match(layout, /id="main-content"/);
+  for (const file of ['jetbrains-mono-latin-wght-normal.woff2', 'jetbrains-mono-latin-ext-wght-normal.woff2']) {
+    assert.ok(existsSync(`public/fonts/${file}`), file)
+    assert.match(css, new RegExp(file.replace(/\./g, '\\.')))
   }
-});
+  assert.match(read('app.vue'), /rel: 'preload', href: '\/fonts\/jetbrains-mono-latin-wght-normal\.woff2'/)
+  assert.doesNotMatch(read('nuxt.config.ts'), /fonts\.googleapis/)
+})
 
-test("homepage exposes the required semantic sections and copy", () => {
-  const page = read("pages/index.vue");
+test('home page is the terminal: banner, tablist menu and one panel per section', () => {
+  const home = read('components/TerminalHome.vue')
 
-  assert.match(page, /<IntroHero/);
-  assert.match(page, /<SelectedWork/);
-  assert.match(page, /<AboutSummary/);
-  assert.match(page, /<ContactFooter/);
-  assert.match(read("components/SelectedWork.vue"), /id="work"/);
-  assert.match(read("components/AboutSummary.vue"), /id="about"/);
-  assert.match(read("components/ContactFooter.vue"), /id="contact"/);
-  const hero = read("components/IntroHero.vue");
-  const contact = read("components/ContactFooter.vue");
-  assert.match(hero, /home\.hero\.title/);
-  assert.doesNotMatch(hero, /home\.hero\.titleLine(?:One|Two)/);
-  assert.match(hero, /from "~\/data\/site\.mjs"/);
-  assert.match(hero, /mailto:\$\{contact\.email\}/);
-  assert.doesNotMatch(hero, /href="#contact"/);
-  assert.match(contact, /home\.contact\.noteLineOne/);
-  assert.match(contact, /home\.contact\.noteLineTwo/);
-  assert.match(contact, /class="sailboat-doodle"/);
-  assert.match(contact, /\.sailboat-doodle\s*\{[^}]*width:\s*116px/s);
-});
+  assert.match(read('pages/index.vue'), /<TerminalHome/)
+  assert.match(home, /<PixelBanner/)
+  assert.match(home, /role="tablist"/)
+  assert.match(home, /aria-orientation="vertical"/)
+  assert.match(home, /role="tab"/)
+  assert.match(home, /:aria-selected=/)
+  assert.match(home, /role="tabpanel"/)
+  assert.match(home, /:hidden="index !== active"/)
+  assert.match(home, /ArrowDown/)
+  assert.match(home, /ArrowUp/)
+})
 
-test("project previews keep destination and preview controls separate", () => {
-  const row = read("components/ProjectRow.vue");
-  const work = read("components/SelectedWork.vue");
+test('the prompt runs slash commands with accessible suggestions and a zsh-style miss', () => {
+  const prompt = read('components/CommandPrompt.vue')
 
-  assert.match(row, /aria-expanded/);
-  assert.match(row, /aria-controls/);
-  assert.match(row, /target="_blank"/);
-  assert.match(row, /<\/a>[\s\S]*<button/);
-  assert.match(row, /loading="lazy"/);
-  assert.match(work, /loading="lazy"/);
-});
+  assert.match(read('components/TerminalHome.vue'), /<CommandPrompt/)
+  assert.match(prompt, /role="combobox"/)
+  assert.match(prompt, /role="listbox"/)
+  assert.match(prompt, /role="option"/)
+  assert.match(prompt, /aria-activedescendant/)
+  assert.match(prompt, /<label[\s\S]*for="command-input"/)
+  assert.match(prompt, /zsh: command not found/)
+  assert.match(prompt, /Type \/ to see available commands\./)
+  for (const command of ['/theme', '/help', '/clear']) assert.match(prompt, new RegExp(command))
+})
 
-test("project artwork starts as a monochrome doodle and reveals the real icon", () => {
-  const icon = read("components/ProjectIconReveal.vue");
+test('without JavaScript every panel is shown instead of the menu', () => {
+  assert.match(read('app.vue'), /classList\.add\('js'\)/)
+  assert.match(read('components/TerminalHome.vue'), /:root:not\(\.js\) \.panel\[hidden\]/)
+})
 
-  assert.match(read("components/ProjectRow.vue"), /<ProjectIconReveal/);
-  assert.match(read("pages/projects.vue"), /<ProjectIconReveal/);
-  assert.doesNotMatch(read("components/ProjectRow.vue"), /project-monogram/);
-  assert.doesNotMatch(read("pages/projects.vue"), /project-monogram/);
-  assert.match(icon, /class="project-icon-doodle"/);
-  assert.match(icon, /class="project-icon-real"/);
-  assert.match(icon, /id="portfolio-sailboat"/);
-  assert.match(icon, /class="portfolio-sailboat-flag"/);
-  assert.match(icon, /\.portfolio-sailboat-flag\s*\{[\s\S]*transition:\s*stroke/);
-  assert.match(icon, /:global\(\.project-row:hover \.portfolio-sailboat-flag\)/);
-  assert.match(icon, /:global\(\.project-row:focus-within \.portfolio-sailboat-flag\)/);
-  assert.match(icon, /:global\(\.project-item:hover \.portfolio-sailboat-flag\)/);
-  assert.match(icon, /:global\(\.project-item:focus-within \.portfolio-sailboat-flag\)/);
-  assert.match(icon, /stroke:\s*var\(--color-accent\)/);
-  assert.match(icon, /v-if="project\.icon"/);
-  assert.match(icon, /:global\(\.project-row:hover \.project-icon-real\)/);
-  assert.match(icon, /:global\(\.project-item:hover \.project-icon-real\)/);
-  assert.match(icon, /:global\(\.project-row:focus-within \.project-icon-real\)/);
-  assert.match(icon, /:global\(\.project-item:focus-within \.project-icon-real\)/);
-});
+test('landmarks and controls are reachable by keyboard', () => {
+  assert.match(read('layouts/default.vue'), /class="skip-link"\s+href="#main-content"/)
+  assert.match(read('layouts/default.vue'), /id="main-content"/)
+  assert.match(read('components/ThemeToggle.vue'), /aria-pressed/)
+  assert.match(read('components/TerminalHome.vue'), /:tabindex="index === active \? 0 : -1"/)
+})
 
-test("detail routes consume canonical content and preserve complete sections", () => {
-  const about = read("pages/about.vue");
-  const projects = read("pages/projects.vue");
+test('writing stays hidden without posts', () => {
+  assert.match(read('data/profile.ts'), /key !== 'writing' \|\| posts\.length > 0/)
+  assert.match(read('pages/writing/index.vue'), /if \(!posts\.length\)[\s\S]*statusCode: 404/)
+  assert.match(read('server/routes/sitemap.xml.ts'), /posts\.length \?/)
+})
 
-  assert.match(about, /from "~\/data\/site\.mjs"/);
-  assert.match(projects, /from "~\/data\/site\.mjs"/);
-  assert.match(about, /aboutPage\.workTitle/);
-  assert.match(about, /aboutPage\.educationTitle/);
-  assert.match(about, /v-if="item\.location"/);
-  assert.match(projects, /projectsPage\.title/);
-});
-
-test("new interface copy is available through the English locale", () => {
-  const messages = JSON.parse(read("lang/en.json"));
-
-  assert.equal(messages.nav?.work, "Work");
-  assert.equal(messages.home?.hero?.title, "Frontend lead. Independent maker");
-  assert.equal(
-    messages.home?.hero?.intro,
-    "Hey there, I’m Egemen, a frontend lead and independent app maker based in Istanbul.",
-  );
-  assert.equal(messages.home?.hero?.role, "Currently leading frontend at The Despatch Company.");
-  assert.equal(messages.home?.hero?.note, "Build. Ship. Repeat.");
-  assert.equal("titleLineOne" in messages.home.hero, false);
-  assert.equal("titleLineTwo" in messages.home.hero, false);
-  assert.equal(messages.home?.work?.preview, "Preview");
-  assert.equal(messages.home?.contact?.heading, "Have something in mind?");
-  assert.equal(messages.home?.contact?.noteLineOne, "Still learning");
-  assert.equal(messages.home?.contact?.noteLineTwo, "the winds.");
-});
-
-test("legacy company name is absent from tracked repository text", () => {
-  const legacyName = ["Despatch", "Cloud"].join(" ");
-  let matches = "";
-
-  try {
-    matches = execFileSync("git", ["grep", "-n", "-I", legacyName], { encoding: "utf8" });
-  } catch (error) {
-    if (error.status !== 1) throw error;
+test('components take career copy from the content file, not hard-coded strings', () => {
+  for (const path of sourceFiles.filter(path => path.startsWith('components/'))) {
+    const source = read(path)
+    assert.doesNotMatch(source, /The Despatch Company|RIGHTYON|Selçuk|egemenkar@gmail/, `${path} hard-codes career content`)
   }
+})
 
-  assert.equal(matches, "");
-});
+test('SEO metadata, structured data and crawl files are present', () => {
+  const app = read('app.vue')
 
-test("visible source copy does not contain em dash characters", () => {
-  for (const path of [
-    "data/site.mjs",
-    "lang/en.json",
-    "components/IntroHero.vue",
-    "components/ProjectRow.vue",
-    "components/SelectedWork.vue",
-    "components/AboutSummary.vue",
-    "components/ContactFooter.vue",
-    "pages/index.vue",
-    "pages/about.vue",
-    "pages/projects.vue",
-  ]) {
-    assert.doesNotMatch(read(path), /—/, `${path} contains an em dash`);
-  }
-});
+  assert.match(app, /twitterCard: 'summary_large_image'/)
+  assert.match(app, /ogImage/)
+  assert.match(app, /'@type': 'Person'/)
+  assert.match(app, /'jobTitle'/)
+  assert.match(app, /'worksFor'/)
+  assert.match(app, /'sameAs': \[links\.linkedin\.href, links\.github\.href\]/)
+  assert.match(read('public/robots.txt'), /Sitemap: https:\/\/egmn\.dev\/sitemap\.xml/)
+  assert.ok(existsSync('server/routes/sitemap.xml.ts'))
 
-test("global document styles do not force horizontal overflow at 320 pixels", () => {
-  const css = read("assets/css/main.css");
+  const og = readFileSync('public/og-image.png')
+  assert.equal(og.readUInt32BE(16), 1200)
+  assert.equal(og.readUInt32BE(20), 630)
+})
 
-  assert.doesNotMatch(css, /html\s*\{[^}]*min-width:\s*320px/s);
-  assert.doesNotMatch(css, /body\s*\{[^}]*min-width:\s*320px/s);
-});
+test('the public CV is a real PDF built from source without a phone number', () => {
+  const pdf = readFileSync('public/egemen-kar-cv.pdf')
+  assert.equal(pdf.subarray(0, 4).toString(), '%PDF')
+  assert.ok(statSync('public/egemen-kar-cv.pdf').size < 500 * 1024)
+  assert.doesNotMatch(read('cv/cv.html'), /\+90|tel:/)
+})
+
+test('indie app and maker positioning is gone from the source', () => {
+  const banned = /app maker|independent maker|indie|fomo fast|rostershift|flickmark|waitlist|app store|pricing|build\. ship/i
+
+  for (const path of sourceFiles) assert.doesNotMatch(read(path), banned, path)
+  assert.ok(!existsSync('public/images/projects'), 'project screenshots should be removed')
+})

@@ -1,113 +1,70 @@
-import assert from "node:assert/strict";
-import { createHash } from "node:crypto";
-import { existsSync, readFileSync } from "node:fs";
-import { test } from "node:test";
+import assert from 'node:assert/strict'
+import { test } from 'node:test'
+import { education, experience, focusAreas, links, person, posts, site } from '../data/profile.ts'
 
-const modulePath = new URL("../data/site.mjs", import.meta.url);
-const approvedPreviews = {
-  "fomo-fast": {
-    path: "/images/projects/fomo-fast-preview.png",
-    sha256: "d40c23ec09482b7fad2964098966a1e81a6ac30cfc1d268f1061d5949e0b5671",
-  },
-  rostershift: {
-    path: "/images/projects/rostershift-preview.png",
-    sha256: "098f82264c365bf739565d8249d59258bfc261e9d77c5fcd7286da7d59141ebe",
-  },
-  flickmark: {
-    path: "/images/projects/flickmark-preview.png",
-    sha256: "ce50101ffb533b6104f90dd800df640ac3c01234aeb35aa671fdcfe5bbe958d5",
-  },
-};
+const words = text => text.trim().split(/\s+/).length
 
-test("canonical site content module exists", () => {
-  assert.ok(existsSync(modulePath), "data/site.mjs should exist");
-});
+test('positioning matches the CV header', () => {
+  assert.equal(person.name, 'Egemen Kar')
+  assert.equal(person.headline, 'Head of Frontend | AI-Native Engineering & Product Delivery')
+  assert.equal(person.subline, 'Frontend Architecture, Performance & Quality')
+  assert.equal(person.jobTitle, 'Head of Frontend')
+  assert.equal(person.employer, 'The Despatch Company')
+  assert.equal(site.title, 'Egemen Kar — Head of Frontend')
+  assert.ok(site.description.length >= 70 && site.description.length <= 200, 'meta description length')
+})
 
-test("featured products are ordered, factual, and have real destinations", async () => {
-  assert.ok(existsSync(modulePath), "data/site.mjs should exist before it can be validated");
-  const { featuredProjects, projects } = await import(modulePath);
+test('hero intro is two sentences and about stays within ~120 words', () => {
+  assert.equal(person.intro.length, 2)
+  assert.ok(words(person.about.join(' ')) <= 125, `about is ${words(person.about.join(' '))} words`)
+})
 
+test('contact links are email, LinkedIn and GitHub', () => {
+  assert.equal(links.email.href, 'mailto:egemenkar@gmail.com')
+  assert.equal(links.linkedin.href, 'https://www.linkedin.com/in/egemen-kar/')
+  assert.equal(links.github.href, 'https://github.com/egemenkar')
+})
+
+test('focus areas are the four agreed blocks', () => {
+  assert.deepEqual(focusAreas.map(({ title }) => title), [
+    'Frontend Architecture',
+    'Performance & Quality',
+    'AI-Native Engineering',
+    'Leading Teams & Delivery',
+  ])
+})
+
+test('experience mirrors the CV timeline', () => {
   assert.deepEqual(
-    featuredProjects.map(({ id }) => id),
-    ["fomo-fast", "rostershift", "flickmark"],
-  );
-  assert.equal(new Set(projects.map(({ id }) => id)).size, projects.length);
-
-  for (const project of featuredProjects) {
-    assert.match(project.url, /^https:\/\//);
-    assert.ok(project.description.length > 20);
-    assert.ok(!/waitlist|coming soon|release is on the way/i.test(project.description));
-  }
-});
-
-test("referenced local project media exists", async () => {
-  assert.ok(existsSync(modulePath), "data/site.mjs should exist before media can be validated");
-  const { featuredProjects } = await import(modulePath);
-
-  for (const project of featuredProjects) {
-    assert.ok(existsSync(new URL(`../public${project.icon}`, import.meta.url)), project.icon);
-    assert.ok(existsSync(new URL(`../public${project.preview}`, import.meta.url)), project.preview);
-  }
-});
-
-test("featured projects use the approved app preview captures", async () => {
-  const { featuredProjects } = await import(modulePath);
-
-  for (const project of featuredProjects) {
-    const approved = approvedPreviews[project.id];
-    assert.ok(approved, `missing approved preview contract for ${project.id}`);
-    assert.equal(project.preview, approved.path);
-
-    const previewPath = new URL(`../public${project.preview}`, import.meta.url);
-    assert.ok(existsSync(previewPath), project.preview);
-    assert.equal(createHash("sha256").update(readFileSync(previewPath)).digest("hex"), approved.sha256);
-  }
-});
-
-test("career and contact data stay verified", async () => {
-  assert.ok(existsSync(modulePath), "data/site.mjs should exist before facts can be validated");
-  const { contact, experience, socialLinks } = await import(modulePath);
-
-  assert.deepEqual(
-    experience.slice(0, 3).map(({ company, role }) => [company, role]),
+    experience.map(({ company, roles }) => [company, roles.map(({ title, start, end }) => [title, start, end])]),
     [
-      ["The Despatch Company", "Head of Frontend"],
-      ["The Despatch Company", "Senior Frontend Developer"],
-      ["Rightyon", "Frontend Developer"],
+      ['The Despatch Company', [['Head of Frontend', '2025-02', null], ['Senior Frontend Developer', '2023-04', '2025-02']]],
+      ['RIGHTYON', [['Frontend Developer', '2022-01', '2023-04']]],
+      ['Freelance', [['Full Stack Web Developer', '2018-04', '2022-01']]],
     ],
-  );
-  const navy = experience.find(({ company }) => company === "Turkish Navy");
-  assert.deepEqual(navy, {
-    company: "Turkish Navy",
-    role: "Supply Officer",
-    period: "Sep 2010 to Apr 2021",
-    location: "Türkiye, On-site",
-    responsibilities: [
-      "Served in the Turkish Navy across logistics, operations, and team coordination.",
-      "After more than a decade in uniform, I voluntarily left to pursue a career in software.",
-    ],
-  });
-  assert.equal(contact.email, "egemenkar@gmail.com");
-  assert.deepEqual(
-    socialLinks.map(({ label }) => label),
-    ["GitHub", "LinkedIn", "Email", "X"],
-  );
-  assert.equal(socialLinks.find(({ label }) => label === "X")?.url, "https://x.com/egmndev");
-});
+  )
 
-test("education includes the current law degree in the requested order", async () => {
-  const { education } = await import(modulePath);
+  for (const { roles } of experience) {
+    for (const role of roles) {
+      assert.ok(role.highlights.length >= 2 && role.highlights.length <= 3, `${role.title} should have 2-3 bullets`)
+    }
+  }
+})
 
-  assert.deepEqual(education.map(({ institution }) => institution), [
-    "Anadolu University",
-    "Ataturk University",
-    "Selcuk University",
-    "Turkish National Defense University",
-  ]);
-  assert.deepEqual(education[2], {
-    institution: "Selcuk University",
-    degree: "Bachelor's degree, Law",
-    year: "Oct 2021 to present",
-    location: "Konya, Türkiye",
-  });
-});
+test('education mirrors the CV, newest first', () => {
+  assert.deepEqual(education.map(({ institution, date, expected }) => [institution, date, Boolean(expected)]), [
+    ['Selçuk University', '2027', true],
+    ['Anadolu University', '2026-05', false],
+    ['Atatürk University', '2023-06', false],
+    ['Turkish National Defense University', '2010-08', false],
+  ])
+})
+
+test('posts, when present, are complete and newest first', () => {
+  for (const post of posts) {
+    assert.match(post.date, /^\d{4}-\d{2}-\d{2}$/)
+    assert.ok(post.title && post.summary && post.href)
+  }
+  const dates = posts.map(({ date }) => date)
+  assert.deepEqual(dates, [...dates].sort().reverse())
+})

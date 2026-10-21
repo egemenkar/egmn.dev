@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "egmn-dev",
   "private": true,
   "type": "module",
   "scripts": {
@@ -8,20 +8,19 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "test": "node --test tests/*.test.mjs"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "node --test tests/*.test.mjs",
+    "images": "node scripts/generate-images.mjs",
+    "cv": "node scripts/build-cv.mjs"
   },
   "devDependencies": {
-    "@nuxt/devtools": "latest",
-    "@nuxtjs/i18n": "^8.0.0-rc.5",
-    "nuxt": "^3.7.4",
+    "@nuxt/eslint": "^1.17.0",
+    "eslint": "^10.13.0",
+    "nuxt": "^3.21.11",
     "simple-analytics-vue": "^3.0.2",
     "typescript": "^5.2.2",
     "vue": "^3.3.4",
     "vue-router": "^4.2.5"
-  },
-  "dependencies": {
-    "@iconify-json/mdi": "^1.1.54",
-    "@iconify-json/simple-icons": "^1.1.73",
-    "@nuxt/ui": "^2.9.0"
   }
 }

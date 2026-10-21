@@ -1,56 +1,26 @@
-# My Personal Website
+# egmn.dev
 
-This is the source code for my personal website, built with Nuxt 3 and Vue.js.
+Personal site of Egemen Kar, Head of Frontend. Built with Nuxt 3 and fully prerendered to static HTML.
 
-## 🚀 Features
+## Updating content
 
-- Responsive design
-- Dark mode
-- Internationalization (i18n) support
-- About me section
-- Projects showcase
+All copy lives in [`data/profile.ts`](data/profile.ts): positioning, about, focus areas, experience, education, links and writing. Components never need to change for a content update.
 
-## 🛠️ Technologies Used
+- **Menu:** the home page is a terminal-style menu; its items and hints are `sections` in `data/profile.ts`.
+- **Writing:** add entries to `posts` (newest first). The Writing section, the `/writing` page, the nav link and the sitemap entry appear automatically once there is at least one post.
+- **Social card and icons:** after changing the name or headline, run `npm run images` (needs a local Chrome) to regenerate `public/og-image.png` and the favicons. New banner letters go in `utils/pixel-font.ts`.
+- **CV PDF:** edit `cv/cv.html`, then run `npm run cv` (needs a local Chrome) to rebuild `public/egemen-kar-cv.pdf`. The public CV deliberately has no phone number.
 
-- [Nuxt 3](https://nuxt.com/)
-- [Vue.js](https://vuejs.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [i18n](https://i18n.nuxtjs.org/)
+## Development
 
-## 🏗️ Setup
+```bash
+npm install
+npm run dev        # http://localhost:3000
+npm run lint
+npm test
+npm run generate   # static output in .output/public
+```
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/egemenkar/egmn.dev.git
-   cd your-repo-name
-   ```
+## License
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## 🚀 Deployment
-
-This site is deployed using Vercel.
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/egemenkar/egmn.dev/issues).
-
-## 📝 License
-
-This project is [MIT](https://choosealicense.com/licenses/mit/) licensed.
-
-## 📞 Contact
-
-Egemen Kar - egemenkar@gmail.com
-
-Project Link: [https://github.com/egemenkar/egmn.dev](https://github.com/egemenkar/egmn.dev)
+[MIT](https://choosealicense.com/licenses/mit/). JetBrains Mono is self-hosted under the SIL Open Font License (see `public/fonts`).
