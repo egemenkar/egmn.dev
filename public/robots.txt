@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://egmn.dev/sitemap.xml
+Sitemap: https://www.egmn.dev/sitemap.xml

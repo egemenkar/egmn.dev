@@ -22,5 +22,8 @@
     "typescript": "^5.2.2",
     "vue": "^3.3.4",
     "vue-router": "^4.2.5"
+  },
+  "engines": {
+    "node": "24.x"
   }
 }

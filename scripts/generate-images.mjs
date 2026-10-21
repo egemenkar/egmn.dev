@@ -51,7 +51,7 @@ const ogHtml = `<!doctype html><meta charset="utf-8"><style>${fontFaces}
   .muted { margin: 4px 0 0; color: #9a9d95; }
 </style>
 <div class="window">
-  <p class="welcome"><b>*</b> Welcome to <b>${new URL(site.url).host}</b></p>
+  <p class="welcome"><b>*</b> Welcome to <b>${new URL(site.url).host.replace(/^www\./, '')}</b></p>
   ${banner}
   <p class="role">${escape(headlineRole)} <span style="color:#9a9d95;font-weight:400">|</span> <span style="color:#e4e3dc;font-weight:400">${escape(headlineFocus)}</span></p>
   <p class="muted">${escape(person.subline)} · ${escape(person.location)}</p>

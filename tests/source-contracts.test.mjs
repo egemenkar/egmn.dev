@@ -102,7 +102,7 @@ test('SEO metadata, structured data and crawl files are present', () => {
   assert.match(app, /'jobTitle'/)
   assert.match(app, /'worksFor'/)
   assert.match(app, /'sameAs': \[links\.linkedin\.href, links\.github\.href\]/)
-  assert.match(read('public/robots.txt'), /Sitemap: https:\/\/egmn\.dev\/sitemap\.xml/)
+  assert.match(read('public/robots.txt'), /Sitemap: https:\/\/www\.egmn\.dev\/sitemap\.xml/)
   assert.ok(existsSync('server/routes/sitemap.xml.ts'))
 
   const og = readFileSync('public/og-image.png')

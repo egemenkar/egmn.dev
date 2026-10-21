@@ -35,7 +35,7 @@ export interface Post {
 }
 
 export const site = {
-  url: 'https://egmn.dev',
+  url: 'https://www.egmn.dev', // Vercel's primary domain (egmn.dev redirects here)
   title: 'Egemen Kar — Head of Frontend',
   description:
     'Egemen Kar is Head of Frontend at The Despatch Company, an engineering leader focused on frontend architecture, performance, quality and AI-native product delivery. Based in Istanbul.',
